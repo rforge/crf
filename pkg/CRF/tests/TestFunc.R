@@ -6,8 +6,8 @@ test.decode <- function(name, decode.method, crf, answer, ...)
 	if (all(decode == answer$decode)) {
 		cat("Passed.\n")
 	} else {
-		cat("\n")
-		stop("Decoding is incorrect!")
+		cat("Failed ***\n")
+		warning(name, ": Decoding is incorrect!")
 	}
 }
 
@@ -16,11 +16,13 @@ test.infer <- function(name, infer.method, crf, answer, cutoff=1e-8, ...)
 	cat("  ", name, ": Inferring ... ", sep="")
 	belief <- infer.method(crf, ...)
 
-	if (max(abs(c(belief$node.bel - answer$node.bel, belief$edge.bel - answer$edge.bel, belief$logZ - answer$logZ))) < cutoff) {
+	node.error <- sapply(1:crf$n.nodes, function(i) max(abs(belief$node.bel[i,] - answer$node.bel[i,])))
+	edge.error <- sapply(1:crf$n.edges, function(i) max(abs(belief$edge.bel[[i]] - answer$edge.bel[[i]])))
+	if (max(abs(c(node.error, edge.error, belief$logZ - answer$logZ))) < cutoff) {
 		cat("Passed.\n")
 	} else {
-		cat("\n")
-		stop("Inference is incorrect!")
+		cat("Failed ***\n")
+		warning(name, ": Inference is incorrect!")
 	}
 }
 
@@ -37,8 +39,8 @@ test.sample <- function(name, sample.method, crf, answer, cutoff=0.01, size=1000
 	if (mean(abs(samples.node.bel - answer$node.bel)) < cutoff) {
 		cat("Passed.\n")
 	} else {
-		cat("\n")
-		stop("Sampling may be incorrect!")
+		cat("Failed ***\n")
+		warning(name, ": Sampling may be incorrect!")
 	}
 }
 

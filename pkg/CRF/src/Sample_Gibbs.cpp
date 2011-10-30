@@ -41,7 +41,6 @@ void CRF::Sample_Gibbs(int burnIn, int *start, int size)
 	double sumProb, *prob = (double *) R_alloc(maxState, sizeof(double));
 
 	int e, n, n1, n2;
-	double *p_nodePot, *p_edgePot;
 
 	GetRNGstate();
 	for (int iter = 0; iter < burnIn+size; iter++)
@@ -51,31 +50,22 @@ void CRF::Sample_Gibbs(int burnIn, int *start, int size)
 		for (int i = 0; i < nNodes; i++)
 		{
 			n = nStates[i];
-			p_nodePot = nodePot + i;
 			for (int j = 0; j < n; j++)
-			{
-				prob[j] = p_nodePot[0];
-				p_nodePot += nNodes;
-			}
+				prob[j] = NodePot(i, j);
 			for (int j = 0; j < nAdj[i]; j++)
 			{
-				e = adjEdges[i][j] - 1;
-				n1 = edges[e] - 1;
-				n2 = edges[e + nEdges] - 1;
+				e = AdjEdges(i, j);
+				n1 = EdgesBegin(e);
+				n2 = EdgesEnd(e);
 				if (n1 == i)
 				{
-					p_edgePot = edgePot + maxState * (y[n2] + maxState * e);
 					for (int k = 0; k < n; k++)
-						prob[k] *= p_edgePot[k];
+						prob[k] *= EdgePot(e, k, y[n2]);
 				}
 				else
 				{
-					p_edgePot = edgePot + y[n1] + maxState * maxState * e;
 					for (int k = 0; k < n; k++)
-					{
-						prob[k] *= p_edgePot[0];
-						p_edgePot += maxState;
-					}
+						prob[k] *= EdgePot(e, y[n1], k);
 				}
 			}
 			sumProb = 0;

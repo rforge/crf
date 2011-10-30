@@ -24,7 +24,7 @@ void CRF::TreeBP(double *messages_1, double *messages_2, bool maximize)
 	double *incoming = (double *) R_alloc(maxState, sizeof(double));
 
 	int s, r, e, n;
-	double mesg, sumMesg, *p_nodePot, *p_edgePot, *p0_edgePot, *p_messages;
+	double mesg, sumMesg, *p_messages;
 
 	int done = 0;
 	while (!done)
@@ -56,13 +56,13 @@ void CRF::TreeBP(double *messages_1, double *messages_2, bool maximize)
 				for (int i = 0; i < nQueue; i++)
 				{
 					n = queue[i];
-					r = adjNodes[s][n] - 1;
+					r = AdjNodes(s, n);
 
 					unsent[s][n] = 0;
 					nUnsent[s]--;
 
 					for (int j = 0; j < nAdj[r]; j++)
-						if (adjNodes[r][j] - 1 == s)
+						if (AdjNodes(r, j) == s)
 						{
 							waiting[r][j] = 0;
 							nWaiting[r]--;
@@ -71,18 +71,14 @@ void CRF::TreeBP(double *messages_1, double *messages_2, bool maximize)
 
 					/* gather incoming messages */
 
-					p_nodePot = nodePot + s;
 					for (int j = 0; j < nStates[s]; j++)
-					{
-						incoming[j] = p_nodePot[0];
-						p_nodePot += nNodes;
-					}
+						incoming[j] = NodePot(s, j);
 					for (int j = 0; j < nAdj[s]; j++)
 					{
 						if (j != n)
 						{
-							e = adjEdges[s][j] - 1;
-							if (edges[e] - 1 == s)
+							e = AdjEdges(s, j);
+							if (EdgesBegin(e) == s)
 								p_messages = messages_1;
 							else
 								p_messages = messages_2;
@@ -94,22 +90,19 @@ void CRF::TreeBP(double *messages_1, double *messages_2, bool maximize)
 
 					/* send messages */
 
-					e = adjEdges[s][n] - 1;
+					e = AdjEdges(s, n);
 					sumMesg = 0;
-					p0_edgePot = edgePot + maxState * maxState * e;
-					if (edges[e] - 1 == s)
+					if (EdgesBegin(e) == s)
 					{
 						p_messages = messages_2 + maxState * e;
 						for (int j = 0; j < nStates[r]; j++)
 						{
-							p_edgePot = p0_edgePot;
-							p0_edgePot += maxState;
 							p_messages[j] = 0;
 							if (maximize)
 							{
 								for (int k = 0; k < nStates[s]; k++)
 								{
-									mesg = incoming[k] * p_edgePot[k];
+									mesg = incoming[k] * EdgePot(e, k, j);
 									if (mesg > p_messages[j])
 										p_messages[j] = mesg;
 								}
@@ -117,7 +110,7 @@ void CRF::TreeBP(double *messages_1, double *messages_2, bool maximize)
 							else
 							{
 								for (int k = 0; k < nStates[s]; k++)
-									p_messages[j] += incoming[k] * p_edgePot[k];
+									p_messages[j] += incoming[k] * EdgePot(e, k, j);
 							}
 							sumMesg += p_messages[j];
 						}
@@ -127,24 +120,21 @@ void CRF::TreeBP(double *messages_1, double *messages_2, bool maximize)
 						p_messages = messages_1 + maxState * e;
 						for (int j = 0; j < nStates[r]; j++)
 						{
-							p_edgePot = p0_edgePot++;
 							p_messages[j] = 0;
 							if (maximize)
 							{
 								for (int k = 0; k < nStates[s]; k++)
 								{
-									mesg = incoming[k] * p_edgePot[0];
+									mesg = incoming[k] * EdgePot(e, j, k);
 									if (mesg > p_messages[j])
 										p_messages[j] = mesg;
-									p_edgePot += maxState;
 								}
 							}
 							else
 							{
 								for (int k = 0; k < nStates[s]; k++)
 								{
-									p_messages[j] += incoming[k] * p_edgePot[0];
-									p_edgePot += maxState;
+									p_messages[j] += incoming[k] * EdgePot(e, j, k);
 								}
 							}
 							sumMesg += p_messages[j];

@@ -75,13 +75,13 @@ void CRF::Sample_Tree(int size)
 
 			for (int j = 0; j < nAdj[n1]; j++)
 			{
-				n2 = adjNodes[n1][j] - 1;
+				n2 = AdjNodes(n1, j);
 				if (ordered[n2])
 					continue;
 
 				ordered[n2] = 1;
 				order[nOrdered] = n2;
-				parentEdge[nOrdered] = adjEdges[n1][j] - 1;
+				parentEdge[nOrdered] = AdjEdges(n1, j);
 				nOrdered++;
 
 				queue[n2] = 1;
@@ -91,7 +91,6 @@ void CRF::Sample_Tree(int size)
 	}
 
 	double sumProb, *prob = (double *) R_alloc(maxState, sizeof(double));
-	double *p_nodeBel, *p_edgeBel;
 
 	GetRNGstate();
 	for (int i = 0; i < size; i++)
@@ -102,35 +101,28 @@ void CRF::Sample_Tree(int size)
 			e = parentEdge[j];
 			if (e == -1)
 			{
-				p_nodeBel = nodeBel + n;
 				for (int k = 0; k < nStates[n]; k++)
-				{
-					prob[k] = p_nodeBel[0];
-					p_nodeBel += nNodes;
-				}
+					prob[k] = NodeBel(n, k);
 			}
 			else
 			{
 				sumProb = 0;
-				if (edges[e] - 1 == n)
+				if (EdgesBegin(e) == n)
 				{
-					s = edges[e + nEdges] - 1;
-					p_edgeBel = edgeBel + maxState * (y[s] + maxState * e);
+					s = EdgesEnd(e);
 					for (int k = 0; k < nStates[n]; k++)
 					{
-						prob[k] = p_edgeBel[k];
+						prob[k] = EdgeBel(e, k, y[s]);
 						sumProb += prob[k];
 					}
 				}
 				else
 				{
-					s = edges[e] - 1;
-					p_edgeBel = edgeBel + y[s] + maxState * maxState * e;
+					s = EdgesBegin(e);
 					for (int k = 0; k < nStates[n]; k++)
 					{
-						prob[k] = p_edgeBel[0];
+						prob[k] = EdgeBel(e, y[s], k);
 						sumProb += prob[k];
-						p_edgeBel += maxState;
 					}
 				}
 				for (int k = 0; k < nStates[n]; k++)
