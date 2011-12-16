@@ -48,7 +48,8 @@ public:
 	int *nAdj, **adjNodes, **adjEdges;
 
 	SEXP _nodePot, _edgePot;
-	double *nodePot, **edgePot, *nEdgeStates;
+	double *nodePot, **edgePot;
+	int *nEdgeStates;
 
 	SEXP _labels;
 	int *labels;
@@ -60,6 +61,7 @@ public:
 	int *samples, nSamples;
 
 	double *maxNodePot, *maxEdgePot, unclampedUB;
+	double ***messages;
 
 	int numProtect;
 
@@ -99,15 +101,16 @@ public:
 	double UB_Estimate(int *clamped);
 
 	/* BP functions */
-	void TreeBP(double *messages_1, double *messages_2, bool maximize = false);
-	void LoopyBP(double *messages_1, double *messages_2, int maxIter, double cutoff, int verbose, bool maximize = false);
-	void Message2NodeBelief(double *messages_1, double *messages_2);
-	void Message2EdgeBelief(double *messages_1, double *messages_2);
+	void TreeBP(bool maximize = false);
+	void LoopyBP(int maxIter, double cutoff, int verbose, bool maximize = false);
+	void MessagesInit();
+	void Messages2NodeBel();
+	void Messages2EdgeBel();
 	void MaxOfMarginals();
 	void BetheFreeEnergy();
-	void TRBP(double *messages_1, double *messages_2, double *mu, double **scaleEdgePot, int maxIter, double cutoff, int verbose, bool maximize = false);
-	void TRBP_Message2NodeBelief(double *messages_1, double *messages_2, double *mu);
-	void TRBP_Message2EdgeBelief(double *messages_1, double *messages_2, double *mu, double **scaleEdgePot);
+	void TRBP(double *mu, double **scaleEdgePot, int maxIter, double cutoff, int verbose, bool maximize = false);
+	void TRBP_Messages2NodeBel(double *mu);
+	void TRBP_Messages2EdgeBel(double *mu, double **scaleEdgePot);
 	void TRBP_BetheFreeEnergy(double *mu);
 	void TRBP_Weights(double *mu);
 	void TRBP_ScaleEdgePot(double *mu, double **scaleEdgePot);
@@ -226,3 +229,59 @@ void setDim3(SEXP array, int x1, int x2, int x3);
 
 /* sample from discret distribution */
 int sample(int n, double *prob);
+
+/* swap variables */
+template <class T>
+void swap(T &a, T &b)
+{
+	T temp = a;
+	a = b;
+	b = temp;
+};
+
+/* allocate multidimensional array */
+template <class T, int n>
+void **allocArray(int dim[n])
+{
+	int size1, size2;
+	void **array, **sub1, **sub2, **tmp;
+	size1 = dim[0];
+	array = sub1 = (void **) R_alloc(size1, sizeof(void *));
+	for (int i = 1; i < n-1; i++)
+	{
+		size2 = size1 * dim[i];
+		tmp = sub2 = (void **) R_alloc(size2, sizeof(void *));
+		for (int j = 0; j < size1; j++)
+		{
+			sub1[j] = (void *) tmp;
+			tmp += dim[i];
+		}
+		size1 = size2;
+		sub1 = sub2;
+	}
+	T *block = (T *) R_alloc(size1 * dim[n-1], sizeof(T));
+	for (int i = 0; i < size1; i++)
+	{
+		sub1[i] = block;
+		block += dim[n-1];
+	}
+	return array;
+};
+
+template <class T>
+T **allocArray2(int dim1, int *dim2)
+{
+	T *block, **array;
+	int array_size;
+	array_size = 0;
+	for (int i = 0; i < dim1; i++)
+		array_size += dim2[i];
+	block = (T *) R_alloc(array_size, sizeof(T));
+	array = (T **) R_alloc(dim1, sizeof(T *));
+	for (int i = 0; i < dim1; i++)
+	{
+		array[i] = block;
+		block += dim2[i];
+	}
+	return array;
+};
