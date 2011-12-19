@@ -1,5 +1,6 @@
 #include <R.h>
 #include <Rdefines.h>
+#include "misc.h"
 
 /* Interfaces to R */
 
@@ -14,6 +15,7 @@ extern "C" {
 	SEXP Decode_TRBP(SEXP _crf, SEXP _maxIter, SEXP _cutoff, SEXP _verbose);
 	SEXP Decode_Greedy(SEXP _crf, SEXP _restart, SEXP _start);
 	SEXP Decode_ICM(SEXP _crf, SEXP _restart, SEXP _start);
+	SEXP Decode_Junction(SEXP _crf);
 
 	/* Inference */
 	SEXP Infer_Exact(SEXP _crf);
@@ -23,6 +25,7 @@ extern "C" {
 	SEXP Infer_Sample(SEXP _crf, SEXP _samples);
 	SEXP Infer_LBP(SEXP _crf, SEXP _maxIter, SEXP _cutoff, SEXP _verbose);
 	SEXP Infer_TRBP(SEXP _crf, SEXP _maxIter, SEXP _cutoff, SEXP _verbose);
+	SEXP Infer_Junction(SEXP _crf);
 
 	/* Sampling */
 	SEXP Sample_Exact(SEXP _crf, SEXP _size);
@@ -36,6 +39,8 @@ extern "C" {
 	SEXP Get_Potential(SEXP _crf, SEXP _configuration);
 	SEXP Get_LogPotential(SEXP _crf, SEXP _configuration);
 }
+
+class JunctionTree;
 
 /* CRF class */
 
@@ -95,6 +100,8 @@ public:
 	/* Utils */
 	double Get_Potential(int *configuration);
 	double Get_LogPotential(int *configuration);
+	void Normalize_NodeBel();
+	void Normalize_EdgeBel();
 	void UB_Init();
 	void UB_Clamp(int *clamped);
 	double UB_Estimate();
@@ -103,18 +110,15 @@ public:
 	/* BP functions */
 	void TreeBP(bool maximize = false);
 	void LoopyBP(int maxIter, double cutoff, int verbose, bool maximize = false);
-	void MessagesInit();
-	void Messages2NodeBel();
 	void Messages2EdgeBel();
 	void MaxOfMarginals();
 	void BetheFreeEnergy();
+	double *SendMessagesSum(int s, int r, int e, double *outgoing, double ***old_messages);
+	double *SendMessagesMax(int s, int r, int e, double *outgoing, double ***old_messages);
 	void TRBP(double *mu, double **scaleEdgePot, int maxIter, double cutoff, int verbose, bool maximize = false);
-	void TRBP_Messages2NodeBel(double *mu);
 	void TRBP_Messages2EdgeBel(double *mu, double **scaleEdgePot);
 	void TRBP_BetheFreeEnergy(double *mu);
-	void TRBP_Weights(double *mu);
-	void TRBP_ScaleEdgePot(double *mu, double **scaleEdgePot);
-	void TRBP_MinSpanTree(int *tree, double *costs);
+	void TRBP_Init(double *mu, double **scaleEdgePot);
 
 	/* Decoding methods */
 	void Decode_Exact();
@@ -125,6 +129,7 @@ public:
 	void Decode_TRBP(int maxIter, double cutoff, int verbose);
 	void Decode_Greedy(int restart = 0, int *start = 0);
 	void Decode_ICM(int restart = 0, int *start = 0);
+	void Decode_Junction();
 
 	/* Inference methods */
 	void Infer_Exact();
@@ -133,6 +138,7 @@ public:
 	void Infer_Sample();
 	void Infer_LBP(int maxIter, double cutoff, int verbose);
 	void Infer_TRBP(int maxIter, double cutoff, int verbose);
+	void Infer_Junction();
 
 	/* Sampling methods */
 	void Sample_Exact(int size = 0);
@@ -210,78 +216,38 @@ inline int &CRF::Samples(int i, int n)
 	return samples[i + nSamples * n];
 }
 
+/* JunctionTree class */
 
-/* initialize the list */
-template <class T>
-void setValues(SEXP r, T *c, T v)
+class JunctionTree
 {
-	for (int i = 0; i < length(r); i++)
-		c[i] = v;
-};
+public:
+	CRF &original;
+	int nNodes, nEdges, *nStates;
 
-/* get/set the list element */
-SEXP getListElement(SEXP list, const char *tag);
-void setListElement(SEXP list, int i, const char *tag, SEXP value);
+	int nClusters, **clusterNodes, *nClusterNodes, **clusterEdges, *nClusterEdges;
+	int nSeperators, **seperatorNodes, *nSeperatorNodes, **seperators;
+	int *nAdj, **adjClusters, **adjSeperators;
+	int *nClusterStates, *nSeperatorStates;
+	double **clusterBel, **seperatorBel;
 
-/* set dim of array */
-void setDim2(SEXP array, int x1, int x2);
-void setDim3(SEXP array, int x1, int x2, int x3);
+	int cid, sid, *masks, *states;
 
-/* sample from discret distribution */
-int sample(int n, double *prob);
+	JunctionTree(CRF &crf);
 
-/* swap variables */
-template <class T>
-void swap(T &a, T &b)
-{
-	T temp = a;
-	a = b;
-	b = temp;
-};
+	double &ClusterBel(int n, int *states);
+	double &SeperatorBel(int n, int *states);
 
-/* allocate multidimensional array */
-template <class T, int n>
-void **allocArray(int dim[n])
-{
-	int size1, size2;
-	void **array, **sub1, **sub2, **tmp;
-	size1 = dim[0];
-	array = sub1 = (void **) R_alloc(size1, sizeof(void *));
-	for (int i = 1; i < n-1; i++)
-	{
-		size2 = size1 * dim[i];
-		tmp = sub2 = (void **) R_alloc(size2, sizeof(void *));
-		for (int j = 0; j < size1; j++)
-		{
-			sub1[j] = (void *) tmp;
-			tmp += dim[i];
-		}
-		size1 = size2;
-		sub1 = sub2;
-	}
-	T *block = (T *) R_alloc(size1 * dim[n-1], sizeof(T));
-	for (int i = 0; i < size1; i++)
-	{
-		sub1[i] = block;
-		block += dim[n-1];
-	}
-	return array;
-};
+	void InitStateMasks(int c, int s = -1);
+	void ResetClusterState();
+	bool NextClusterState();
+	bool NextSeperatorState();
 
-template <class T>
-T **allocArray2(int dim1, int *dim2)
-{
-	T *block, **array;
-	int array_size;
-	array_size = 0;
-	for (int i = 0; i < dim1; i++)
-		array_size += dim2[i];
-	block = (T *) R_alloc(array_size, sizeof(T));
-	array = (T **) R_alloc(dim1, sizeof(T *));
-	for (int i = 0; i < dim1; i++)
-	{
-		array[i] = block;
-		block += dim2[i];
-	}
-	return array;
+	void SendMessagesFromClusterSum(int c, int s);
+	void SendMessagesFromClusterMax(int c, int s);
+	void SendMessagesFromSeperator(int s, int c);
+	void InitMessages();
+	void Messages2NodeBel(bool maximize = false);
+	void Messages2EdgeBel();
+
+	void SendMessages(bool maximize = false);
 };

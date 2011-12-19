@@ -12,9 +12,7 @@ void CRF::Infer_Tree()
 {
 	void *vmax = vmaxget(); 
 
-	MessagesInit();
 	TreeBP();
-	Messages2NodeBel();
 	Messages2EdgeBel();
 	BetheFreeEnergy();
 

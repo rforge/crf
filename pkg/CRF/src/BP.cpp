@@ -1,42 +1,5 @@
 #include "CRF.h"
 
-/* BP messages init */
-
-void CRF::MessagesInit()
-{
-	int dim[] = {2, nEdges, maxState};
-	messages = (double ***) allocArray<double, 3>(dim);
-}
-
-/* Node beliefs */
-
-void CRF::Messages2NodeBel()
-{
-	for (int i = 0; i < length(_nodePot); i++)
-		nodeBel[i] = nodePot[i];
-
-	int n1, n2;
-	double sumBel;
-	for (int i = 0; i < nEdges; i++)
-	{
-		n1 = EdgesBegin(i);
-		n2 = EdgesEnd(i);
-		for (int j = 0; j < nStates[n1]; j++)
-			NodeBel(n1, j) *= messages[0][i][j];
-		for (int j = 0; j < nStates[n2]; j++)
-			NodeBel(n2, j) *= messages[1][i][j];
-	}
-
-	for (int i = 0; i < nNodes; i++)
-	{
-		sumBel = 0;
-		for (int j = 0; j < nStates[i]; j++)
-			sumBel += NodeBel(i, j);
-		for (int j = 0; j < nStates[i]; j++)
-			NodeBel(i, j) /= sumBel;
-	}
-}
-
 /* Edge beliefs */
 
 void CRF::Messages2EdgeBel()
@@ -145,4 +108,84 @@ void CRF::BetheFreeEnergy()
 	}
 
 	*logZ = - nodeEnergy + nodeEntropy - edgeEnergy + edgeEntropy;
+}
+
+/* send sum-product messages */
+
+double *CRF::SendMessagesSum(int s, int r, int e, double *outgoing, double ***old_messages)
+{
+	double *msg, sumMsg = 0;
+	if (EdgesBegin(e) == s)
+	{
+		for (int j = 0; j < nStates[s]; j++)
+			outgoing[j] = old_messages[0][e][j] == 0 ? 0 : NodeBel(s, j) / old_messages[0][e][j];
+		msg = messages[1][e];
+		for (int j = 0; j < nStates[r]; j++)
+		{
+			msg[j] = 0;
+			for (int k = 0; k < nStates[s]; k++)
+				msg[j] += outgoing[k] * EdgePot(e, k, j);
+			sumMsg += msg[j];
+		}
+	}
+	else
+	{
+		for (int j = 0; j < nStates[s]; j++)
+			outgoing[j] = old_messages[1][e][j] == 0 ? 0 : NodeBel(s, j) / old_messages[1][e][j];
+		msg = messages[0][e];
+		for (int j = 0; j < nStates[r]; j++)
+		{
+			msg[j] = 0;
+			for (int k = 0; k < nStates[s]; k++)
+				msg[j] += outgoing[k] * EdgePot(e, j, k);
+			sumMsg += msg[j];
+		}
+	}
+	for (int j = 0; j < nStates[r]; j++)
+		msg[j] /= sumMsg;
+	return msg;
+}
+
+/* send max-product messages */
+
+double *CRF::SendMessagesMax(int s, int r, int e, double *outgoing, double ***old_messages)
+{
+	double *msg, m, sumMsg = 0;
+	if (EdgesBegin(e) == s)
+	{
+		for (int j = 0; j < nStates[s]; j++)
+			outgoing[j] = old_messages[0][e][j] == 0 ? 0 : NodeBel(s, j) / old_messages[0][e][j];
+		msg = messages[1][e];
+		for (int j = 0; j < nStates[r]; j++)
+		{
+			msg[j] = 0;
+			for (int k = 0; k < nStates[s]; k++)
+			{
+				m = outgoing[k] * EdgePot(e, k, j);
+				if (m > msg[j])
+					msg[j] = m;
+			}
+			sumMsg += msg[j];
+		}
+	}
+	else
+	{
+		for (int j = 0; j < nStates[s]; j++)
+			outgoing[j] = old_messages[1][e][j] == 0 ? 0 : NodeBel(s, j) / old_messages[1][e][j];
+		msg = messages[0][e];
+		for (int j = 0; j < nStates[r]; j++)
+		{
+			msg[j] = 0;
+			for (int k = 0; k < nStates[s]; k++)
+			{
+				m = outgoing[k] * EdgePot(e, j, k);
+				if (m > msg[j])
+					msg[j] = m;
+			}
+			sumMsg += msg[j];
+		}
+	}
+	for (int j = 0; j < nStates[r]; j++)
+		msg[j] /= sumMsg;
+	return msg;
 }
