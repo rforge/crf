@@ -23,10 +23,11 @@ Sampling methods
 sample.exact(crf, size)
 sample.chain(crf, size)
 sample.tree(crf, size)
-sample.conditional(crf, clamped, sample.method, ...)
-sample.cutset(crf, cutset, size)
+sample.conditional(crf, size, clamped, sample.method, ...)
+sample.cutset(crf, size, cutset, engine = "default")
+sample.junction(crf, size)
 sample.gibbs(crf, size, burn.in = 1000,
-             start = apply(crf$node.pot, 1, which.max), ...)
+             start = apply(crf$node.pot, 1, which.max))
 </pre>
 
 
@@ -36,8 +37,30 @@ sample.gibbs(crf, size, burn.in = 1000,
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
-
-
+</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>clamped</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>cutset</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>sample.method</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>engine</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>burn.in</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
 </td></tr>
 </table>
 
@@ -62,6 +85,9 @@ sample.gibbs(crf, size, burn.in = 1000,
 <li> <p><code><a href="sample.html">sample.cutset</a></code>         Exact sampling for graphs with a small cutset using cutset conditioning
 </p>
 </li>
+<li> <p><code><a href="sample.html">sample.junction</a></code>       Exact sampling for low-treewidth graphs using junction trees
+</p>
+</li>
 <li> <p><code><a href="sample.html">sample.gibbs</a></code>          Approximate sampling using a single-site Gibbs sampler
 </p>
 </ul>
@@ -80,13 +106,14 @@ sample.gibbs(crf, size, burn.in = 1000,
 <pre>
 library(CRF)
 data(Small)
-sample.exact(small.crf, 100)
-sample.chain(small.crf, 100)
-sample.tree(small.crf, 100)
-sample.conditional(small.crf, c(0,1,0,0), sample.exact, 100)
-sample.cutset(small.crf, c(2), 100)
-sample.gibbs(small.crf, 100)
+s &lt;- sample.exact(small.crf, 100)
+s &lt;- sample.chain(small.crf, 100)
+s &lt;- sample.tree(small.crf, 100)
+s &lt;- sample.conditional(small.crf, 100, c(0,1,0,0), sample.exact)
+s &lt;- sample.cutset(small.crf, 100, c(2))
+s &lt;- sample.junction(small.crf, 100)
+s &lt;- sample.gibbs(small.crf, 100)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.2-0 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

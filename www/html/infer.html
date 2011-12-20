@@ -24,7 +24,8 @@ infer.exact(crf)
 infer.chain(crf)
 infer.tree(crf)
 infer.conditional(crf, clamped, infer.method, ...)
-infer.cutset(crf, cutset)
+infer.cutset(crf, cutset, engine = "default")
+infer.junction(crf)
 infer.sample(crf, sample.method, ...)
 infer.lbp(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
 infer.trbp(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
@@ -37,8 +38,33 @@ infer.trbp(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
-
-
+</td></tr>
+<tr valign="top"><td><code>clamped</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>cutset</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>infer.method</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>sample.method</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>engine</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>max.iter</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>cutoff</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
 </td></tr>
 </table>
 
@@ -61,6 +87,9 @@ infer.trbp(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
 </p>
 </li>
 <li> <p><code><a href="infer.html">infer.cutset</a></code>          Exact inference for graphs with a small cutset using cutset conditioning
+</p>
+</li>
+<li> <p><code><a href="infer.html">infer.junction</a></code>        Exact decoding for low-treewidth graphs using junction trees
 </p>
 </li>
 <li> <p><code><a href="infer.html">infer.sample</a></code>          Approximate inference using sampling (takes a sampling method as input)
@@ -87,15 +116,16 @@ infer.trbp(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
 <pre>
 library(CRF)
 data(Small)
-infer.exact(small.crf)
-infer.chain(small.crf)
-infer.tree(small.crf)
-infer.conditional(small.crf, c(0,1,0,0), infer.exact)
-infer.cutset(small.crf, c(2))
-infer.sample(small.crf, sample.exact, 10000)
-infer.lbp(small.crf)
-infer.trbp(small.crf)
+i &lt;- infer.exact(small.crf)
+i &lt;- infer.chain(small.crf)
+i &lt;- infer.tree(small.crf)
+i &lt;- infer.conditional(small.crf, c(0,1,0,0), infer.exact)
+i &lt;- infer.cutset(small.crf, c(2))
+i &lt;- infer.junction(small.crf)
+i &lt;- infer.sample(small.crf, sample.exact, 10000)
+i &lt;- infer.lbp(small.crf)
+i &lt;- infer.trbp(small.crf)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.2-0 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
 </body></html>

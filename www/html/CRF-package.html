@@ -44,6 +44,9 @@ The code is written entirely in R and C++. The initial version is ported from UG
 <li> <p><code><a href="decode.html">decode.cutset</a></code>         Exact decoding for graphs with a small cutset using cutset conditioning
 </p>
 </li>
+<li> <p><code><a href="decode.html">decode.junction</a></code>       Exact decoding for low-treewidth graphs using junction trees
+</p>
+</li>
 <li> <p><code><a href="decode.html">decode.sample</a></code>         Approximate decoding using sampling (takes a sampling method as input)
 </p>
 </li>
@@ -60,6 +63,12 @@ The code is written entirely in R and C++. The initial version is ported from UG
 </p>
 </li>
 <li> <p><code><a href="decode.html">decode.icm</a></code>            Approximate decoding with the iterated conditional modes algorithm
+</p>
+</li>
+<li> <p><code><a href="decode.html">decode.block</a></code>          Approximate decoding with the block iterated conditional modes algorithm
+</p>
+</li>
+<li> <p><code><a href="decode.html">decode.ilp</a></code>            Exact decoding with an integer linear programming formulation and approximate using LP relaxation
 </p>
 </ul>
 
@@ -80,6 +89,9 @@ The code is written entirely in R and C++. The initial version is ported from UG
 </p>
 </li>
 <li> <p><code><a href="infer.html">infer.cutset</a></code>          Exact inference for graphs with a small cutset using cutset conditioning
+</p>
+</li>
+<li> <p><code><a href="infer.html">infer.junction</a></code>        Exact decoding for low-treewidth graphs using junction trees
 </p>
 </li>
 <li> <p><code><a href="infer.html">infer.sample</a></code>          Approximate inference using sampling (takes a sampling method as input)
@@ -109,6 +121,9 @@ The code is written entirely in R and C++. The initial version is ported from UG
 </p>
 </li>
 <li> <p><code><a href="sample.html">sample.cutset</a></code>         Exact sampling for graphs with a small cutset using cutset conditioning
+</p>
+</li>
+<li> <p><code><a href="sample.html">sample.junction</a></code>       Exact sampling for low-treewidth graphs using junction trees
 </p>
 </li>
 <li> <p><code><a href="sample.html">sample.gibbs</a></code>          Approximate sampling using a single-site Gibbs sampler
@@ -157,5 +172,5 @@ infer.exact(small.crf)
 sample.exact(small.crf, 100)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.2-0 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
 </body></html>
