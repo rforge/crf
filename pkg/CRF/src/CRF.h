@@ -36,9 +36,16 @@ extern "C" {
 	SEXP Sample_Gibbs(SEXP _crf, SEXP _size, SEXP _burnIn, SEXP _start);
 
 	/* Utils */
-	SEXP Clamp_NodePot(SEXP _crfClamped);
+	SEXP Make_AdjInfo(SEXP _crf);
+	SEXP MRF_Update(SEXP _crf);
+	SEXP CRF_Update(SEXP _crf, SEXP _nodeFea, SEXP _edgeFea, SEXP _nodeExt, SEXP _edgeExt);
+	SEXP MRF_Stat(SEXP _crf, SEXP _instances);
+	SEXP MRF_NLL(SEXP _crf, SEXP _par, SEXP _instances, SEXP _infer, SEXP _env);
+	SEXP CRF_NLL(SEXP _crf, SEXP _par, SEXP _instances, SEXP _nodeFea, SEXP _edgeFea, SEXP _nodeExt, SEXP _edgeExt, SEXP _infer, SEXP _env);
+	SEXP Clamp_Reset(SEXP _crfClamped);
 	SEXP Get_Potential(SEXP _crf, SEXP _configuration);
 	SEXP Get_LogPotential(SEXP _crf, SEXP _configuration);
+	SEXP Calc_Frequency(SEXP _v, SEXP _n);
 }
 
 class JunctionTree;
@@ -47,6 +54,8 @@ class JunctionTree;
 
 class CRF {
 public:
+	SEXP _crf;
+
 	SEXP _nNodes, _nEdges, _edges, _nStates, _maxState;
 	int nNodes, nEdges, *edges, *nStates, maxState;
 
@@ -99,6 +108,8 @@ public:
 	int &Samples(int i, int n);
 
 	/* Utils */
+	void Update_Pot(SEXP _nodeFea, SEXP _edgeFea, SEXP _nodeExt, SEXP _edgeExt);
+	void Update_Pot();
 	double Get_Potential(int *configuration);
 	double Get_LogPotential(int *configuration);
 	void Normalize_NodeBel();
