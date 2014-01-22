@@ -1,19 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Make CRF data structure</title>
+<html><head><title>R: Make CRF</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="R.css">
 </head><body>
 
 <table width="100%" summary="page for make.crf {CRF}"><tr><td>make.crf {CRF}</td><td align="right">R Documentation</td></tr></table>
 
-<h2>
-Make CRF data structure
-</h2>
+<h2>Make CRF</h2>
 
 <h3>Description</h3>
 
-
-<p>Generate CRF data structure from the adjacent matrix
+<p>Generate CRF from the adjacent matrix
 </p>
 
 
@@ -25,7 +22,6 @@ make.crf(adj.matrix, nstates)
 
 
 <h3>Arguments</h3>
-
 
 <table summary="R argblock">
 <tr valign="top"><td><code>adj.matrix</code></td>
@@ -41,18 +37,24 @@ make.crf(adj.matrix, nstates)
 
 <h3>Details</h3>
 
-
-<p>The function will generate a empty CRF data structure from a given adjacent matrix.
-If the length of <code>nstates</code> is less than <code>n.nodes</code>, it will be used repeatly.
-All node and edge potentials are initilized as 1.
+<p>The function will generate a empty CRF structure from a
+given adjacent matrix. If the length of <code>nstates</code> is
+less than <code>n.nodes</code>, it will be used repeatly. All
+node and edge potentials are initilized as 1.
+</p>
+<p>Since the CRF data are often very huge, CRF is implemented
+by using environment. Therefore, normal assignment will
+only copy the pointer instead of real data. The vairables
+using normal assignment will refer to the exactly same CRF
+data. For complete duplication of the data, please use
+<code><a href="duplicate.html">duplicate</a></code>.
 </p>
 
 
 <h3>Value</h3>
 
-
-<p>The function will return a CRF data structure, which is a list with components:
-</p>
+<p>The function will return a CRF, which is an environment
+with components: </p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>n.nodes</code></td>
 <td>
@@ -61,46 +63,59 @@ All node and edge potentials are initilized as 1.
 <tr valign="top"><td><code>n.edges</code></td>
 <td>
 <p>The number of edges.</p>
-</td></tr>
-<tr valign="top"><td><code>n.states</code></td>
+</td></tr> <tr valign="top"><td><code>n.states</code></td>
 <td>
-<p>The number of states for each node. It is a vector of length <code>n.nodes</code>.</p>
-</td></tr>
-<tr valign="top"><td><code>max.state</code></td>
+<p>The
+number of states for each node. It is a vector of length
+<code>n.nodes</code>.</p>
+</td></tr> <tr valign="top"><td><code>max.state</code></td>
 <td>
-<p>The maximum number of states. It is equal to <code>max(n.states)</code>.</p>
+<p>The maximum number of
+states. It is equal to <code>max(n.states)</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>edges</code></td>
 <td>
-<p>The node pair of each edge. It is a matrix with 2 columns and <code>n.edges</code> rows. Each row denotes one edge. The node with smaller id is put in the first column.</p>
-</td></tr>
-<tr valign="top"><td><code>n.adj</code></td>
+<p>The node pair of each edge. It is a matrix
+with 2 columns and <code>n.edges</code> rows. Each row denotes
+one edge. The node with smaller id is put in the first
+column.</p>
+</td></tr> <tr valign="top"><td><code>n.adj</code></td>
 <td>
-<p>The number of adjacent nodes for each node. It is a vector of length <code>n.nodes</code>.</p>
+<p>The number of adjacent nodes for each
+node. It is a vector of length <code>n.nodes</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>adj.nodes</code></td>
 <td>
-<p>The list of adjacent nodes for each node. It is a list of length <code>n.nodes</code> and the i-th element is a vector of length <code>n.adj[i]</code>.</p>
+<p>The list of adjacent nodes for each node.
+It is a list of length <code>n.nodes</code> and the i-th element
+is a vector of length <code>n.adj[i]</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>adj.edges</code></td>
 <td>
-<p>The list of adjacent edges for each node. It is similiar to <code>adj.nodes</code> while contains the edge ids instead of node ids.</p>
-</td></tr>
-<tr valign="top"><td><code>node.pot</code></td>
+<p>The list of adjacent edges for each node.
+It is similiar to <code>adj.nodes</code> while contains the edge
+ids instead of node ids.</p>
+</td></tr> <tr valign="top"><td><code>node.pot</code></td>
 <td>
-<p>The node potentials. It is a matrix with dimmension <code>(n.nodes, max.state)</code>. Each row <code>node.pot[i,]</code> denotes the node potentials of the i-th node.</p>
-</td></tr>
-<tr valign="top"><td><code>edge.pot</code></td>
+<p>The node
+potentials. It is a matrix with dimmension <code>(n.nodes,
+max.state)</code>.  Each row <code>node.pot[i,]</code> denotes the node
+potentials of the i-th node.</p>
+</td></tr> <tr valign="top"><td><code>edge.pot</code></td>
 <td>
-<p>The edge potentials. It is a list of <code>n.edges</code> matrixes. Each matrix <code>edge.pot[[i]]</code>, with dimension <code>(n.states[edges[i,1]], n.states[edges[i,2]])</code>, denotes the edge potentials of the i-th edge.</p>
+<p>The edge
+potentials. It is a list of <code>n.edges</code> matrixes. Each
+matrix <code>edge.pot[[i]]</code>, with dimension
+<code>(n.states[edges[i,1]], n.states[edges[i,2]])</code>,
+denotes the edge potentials of the i-th edge.</p>
 </td></tr>
 </table>
 
 
 <h3>See Also</h3>
 
-
-<p><code><a href="clamp.crf.html">clamp.crf</a></code>, <code><a href="sub.crf.html">sub.crf</a></code>
+<p><code><a href="duplicate.html">duplicate</a></code>, <code><a href="clamp.crf.html">clamp.crf</a></code>,
+<code><a href="sub.crf.html">sub.crf</a></code>
 </p>
 
 
@@ -131,8 +146,7 @@ for (i in 1:crf$n.edges)
    crf$edge.pot[[i]][1,] &lt;- c(2, 1)
    crf$edge.pot[[i]][2,] &lt;- c(1, 2)
 }
-
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.2-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
 </body></html>
