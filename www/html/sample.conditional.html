@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Conditional sampling method</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for sample.conditional {CRF}"><tr><td>sample.conditional {CRF}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Conditional sampling method</h2>
+
+<h3>Description</h3>
+
+<p>Generating samples from the distribution
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+sample.conditional(crf, size, clamped, sample.method, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>crf</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>size</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>clamped</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>sample.method</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Conditional sampling (takes another sampling method as
+input)
+</p>
+
+
+<h3>Value</h3>
+
+<p>This function will return a matrix with <code>size</code> rows
+and <code>crf$n.nodes</code> columns, in which each row is a
+sampled configuration.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+library(CRF)
+data(Small)
+s &lt;- sample.conditional(small.crf, 100, c(0,1,0,0), sample.exact)
+</pre>
+
+<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+</body></html>
