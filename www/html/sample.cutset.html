@@ -26,12 +26,15 @@ sample.cutset(crf, size, cutset, engine = "default")
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>size</code></td>
 <td>
+<p>The sample size</p>
 </td></tr>
 <tr valign="top"><td><code>cutset</code></td>
 <td>
+<p>A vector of nodes in the cutset</p>
 </td></tr>
 <tr valign="top"><td><code>engine</code></td>
 <td>
@@ -62,8 +65,8 @@ sampled configuration.
 <pre>
 library(CRF)
 data(Small)
-s &lt;- sample.cutset(small.crf, 100, c(2))
+s &lt;- sample.cutset(Small$crf, 100, c(2))
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

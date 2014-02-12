@@ -5,7 +5,7 @@
 decode.tree(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return the most likely configuration,
@@ -21,6 +21,6 @@ max-product belief propagation
 \examples{
 library(CRF)
 data(Small)
-d <- decode.tree(small.crf)
+d <- decode.tree(Small$crf)
 }
 

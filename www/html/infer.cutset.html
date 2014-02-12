@@ -26,9 +26,11 @@ infer.cutset(crf, cutset, engine = "default")
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>cutset</code></td>
 <td>
+<p>A vector of nodes in the cutset</p>
 </td></tr>
 <tr valign="top"><td><code>engine</code></td>
 <td>
@@ -76,8 +78,8 @@ factor Z.</p>
 <pre>
 library(CRF)
 data(Small)
-i &lt;- infer.cutset(small.crf, c(2))
+i &lt;- infer.cutset(Small$crf, c(2))
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -5,11 +5,11 @@
 decode.sample(crf, sample.method, ...)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{sample.method}{}
+  \item{sample.method}{The sampling method}
 
-  \item{...}{}
+  \item{...}{The parameters for \code{sample.method}}
 }
 \value{
 This function will return the most likely configuration,
@@ -25,6 +25,6 @@ method as input)
 \examples{
 library(CRF)
 data(Small)
-d <- decode.sample(small.crf, sample.exact, 10000)
+d <- decode.sample(Small$crf, sample.exact, 10000)
 }
 

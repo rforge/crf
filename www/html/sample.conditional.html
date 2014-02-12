@@ -26,18 +26,25 @@ sample.conditional(crf, size, clamped, sample.method, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>size</code></td>
 <td>
+<p>The sample size</p>
 </td></tr>
 <tr valign="top"><td><code>clamped</code></td>
 <td>
+<p>The vector of fixed values for clamped
+nodes, 0 for unfixed nodes</p>
 </td></tr>
 <tr valign="top"><td><code>sample.method</code></td>
 <td>
+<p>The sampling method to solve the
+clamped CRF</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
+<p>The parameters for <code>sample.method</code></p>
 </td></tr>
 </table>
 
@@ -62,8 +69,8 @@ sampled configuration.
 <pre>
 library(CRF)
 data(Small)
-s &lt;- sample.conditional(small.crf, 100, c(0,1,0,0), sample.exact)
+s &lt;- sample.conditional(Small$crf, 100, c(0,1,0,0), sample.exact)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -5,7 +5,7 @@
 infer.tree(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return a list with components:
@@ -28,6 +28,6 @@ sum-product belief propagation
 \examples{
 library(CRF)
 data(Small)
-i <- infer.tree(small.crf)
+i <- infer.tree(Small$crf)
 }
 

@@ -26,25 +26,39 @@ mrf.nll(par, crf, instances, infer.method = infer.chain, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>par</code></td>
 <td>
+<p>The parameter vector of CRF</p>
 </td></tr>
 <tr valign="top"><td><code>instances</code></td>
 <td>
+<p>The training data matrix of MRF model</p>
 </td></tr>
 <tr valign="top"><td><code>infer.method</code></td>
 <td>
+<p>The inference method used to compute
+the likelihood</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
+<p>Other parameters need by the inference method</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>Calculate the negative log-likelihood of MRF model
+<p>This function calculates the negative log-likelihood of MRF
+model as well as the gradient. This function is intended to
+be called by optimization algorithm in training process.
+Before calling this function, the MRF sufficient statistics
+must be calculated and stored in object <code>par.stat</code> of
+CRF.
+</p>
+<p>In the training data matrix <code>instances</code>, each row is
+an instance and each column corresponds a node in CRF.
 </p>
 
 
@@ -54,5 +68,12 @@ mrf.nll(par, crf, instances, infer.method = infer.chain, ...)
 log-likilihood.
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+
+<h3>See Also</h3>
+
+<p><code><a href="mrf.stat.html">mrf.stat</a></code>, <code><a href="mrf.update.html">mrf.update</a></code>,
+<code><a href="train.mrf.html">train.mrf</a></code>
+</p>
+
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

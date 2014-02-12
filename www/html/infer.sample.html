@@ -26,12 +26,15 @@ infer.sample(crf, sample.method, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>sample.method</code></td>
 <td>
+<p>The sampling method</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
+<p>The parameters for <code>sample.method</code></p>
 </td></tr>
 </table>
 
@@ -73,8 +76,8 @@ factor Z.</p>
 <pre>
 library(CRF)
 data(Small)
-i &lt;- infer.sample(small.crf, sample.exact, 10000)
+i &lt;- infer.sample(Small$crf, sample.exact, 10000)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

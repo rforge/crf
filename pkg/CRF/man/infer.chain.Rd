@@ -5,7 +5,7 @@
 infer.chain(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return a list with components:
@@ -28,6 +28,6 @@ forward-backward algorithm
 \examples{
 library(CRF)
 data(Small)
-i <- infer.chain(small.crf)
+i <- infer.chain(Small$crf)
 }
 

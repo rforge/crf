@@ -17,7 +17,7 @@
 <h3>Usage</h3>
 
 <pre>
-train.mrf(crf, instances, trace = 0)
+train.mrf(crf, instances, nll = mrf.nll, trace = 0)
 </pre>
 
 
@@ -26,12 +26,21 @@ train.mrf(crf, instances, trace = 0)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>instances</code></td>
 <td>
+<p>The training data matrix of CRF model</p>
+</td></tr>
+<tr valign="top"><td><code>nll</code></td>
+<td>
+<p>The function to calculate negative log
+likelihood</p>
 </td></tr>
 <tr valign="top"><td><code>trace</code></td>
 <td>
+<p>Non-negative integer to control the tracing
+informtion of the optimization process</p>
 </td></tr>
 </table>
 
@@ -41,12 +50,23 @@ train.mrf(crf, instances, trace = 0)
 <p>This function trains the Markov Random Fields (MRF) model,
 which is a simple variant of CRF model.
 </p>
+<p>In the training data matrix <code>instances</code>, each row is
+an instance and each column corresponds a node in CRF.
+</p>
 
 
 <h3>Value</h3>
 
-<p>This function will return the same CRF.
+<p>This function will directly modify the CRF and return the
+same CRF.
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+
+<h3>See Also</h3>
+
+<p><code><a href="mrf.update.html">mrf.update</a></code>, <code><a href="mrf.stat.html">mrf.stat</a></code>,
+<code><a href="mrf.nll.html">mrf.nll</a></code>, <code><a href="make.crf.html">make.crf</a></code>
+</p>
+
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

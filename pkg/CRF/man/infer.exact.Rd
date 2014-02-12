@@ -5,7 +5,7 @@
 infer.exact(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return a list with components:
@@ -27,6 +27,6 @@ Exact inference for small graphs with brute-force counting
 \examples{
 library(CRF)
 data(Small)
-i <- infer.exact(small.crf)
+i <- infer.exact(Small$crf)
 }
 

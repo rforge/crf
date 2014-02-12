@@ -5,9 +5,9 @@
 sample.exact(crf, size)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{size}{}
+  \item{size}{The sample size}
 }
 \value{
 This function will return a matrix with \code{size} rows
@@ -24,6 +24,6 @@ cumulative distribution
 \examples{
 library(CRF)
 data(Small)
-s <- sample.exact(small.crf, 100)
+s <- sample.exact(Small$crf, 100)
 }
 

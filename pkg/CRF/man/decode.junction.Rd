@@ -5,7 +5,7 @@
 decode.junction(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return the most likely configuration,
@@ -21,6 +21,6 @@ trees
 \examples{
 library(CRF)
 data(Small)
-d <- decode.junction(small.crf)
+d <- decode.junction(Small$crf)
 }
 

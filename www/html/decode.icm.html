@@ -26,12 +26,17 @@ decode.icm(crf, restart = 0, start = apply(crf$node.pot, 1, which.max))
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>restart</code></td>
 <td>
+<p>Non-negative integer to control how many
+restart iterations are repeated</p>
 </td></tr>
 <tr valign="top"><td><code>start</code></td>
 <td>
+<p>An initial configuration, a good start will
+significantly reduce the seraching time</p>
 </td></tr>
 </table>
 
@@ -55,8 +60,8 @@ which is a vector of length <code>crf$n.nodes</code>.
 <pre>
 library(CRF)
 data(Small)
-d &lt;- decode.icm(small.crf)
+d &lt;- decode.icm(Small$crf)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

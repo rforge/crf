@@ -5,9 +5,9 @@
 sample.junction(crf, size)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{size}{}
+  \item{size}{The sample size}
 }
 \value{
 This function will return a matrix with \code{size} rows
@@ -24,6 +24,6 @@ trees
 \examples{
 library(CRF)
 data(Small)
-s <- sample.junction(small.crf, 100)
+s <- sample.junction(Small$crf, 100)
 }
 

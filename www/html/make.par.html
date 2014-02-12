@@ -26,24 +26,36 @@ make.par(crf, n.par = 1)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>n.par</code></td>
 <td>
+<p>The number of parameters</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>Make the data structure of parameters need for modeling and
-training
+<p>This function makes the data structure of parameters need
+for modeling and training CRF. The parameters are stored in
+<code>par</code>, which is a numeric vector of length
+<code>n.par</code>.
 </p>
 
 
 <h3>Value</h3>
 
-<p>This function will return the same CRF.
+<p>This function will directly modify the CRF and return the
+same CRF.
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+
+<h3>See Also</h3>
+
+<p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="make.features.html">make.features</a></code>,
+<code><a href="make.crf.html">make.crf</a></code>
+</p>
+
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

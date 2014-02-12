@@ -160,8 +160,15 @@ single-site Gibbs sampler </p>
 </li></ul>
 
 <p>Training: Given data, computing the most likely estimates
-of the parameters
-</p>
+of the parameters </p>
+ <ul>
+<li> <p><code><a href="train.crf.html">train.crf</a></code>
+Train CRF model </p>
+</li>
+<li> <p><code><a href="train.mrf.html">train.mrf</a></code> Train MRF
+model </p>
+</li></ul>
+
 
 
 <h3>Author(s)</h3>
@@ -172,19 +179,16 @@ of the parameters
 
 <h3>References</h3>
 
- <ul>
-<li><p> J. Lafferty, A. McCallum, and F. Pereira.
-Conditional random fields: Probabilistic models for
-segmenting and labeling sequence data. In <EM>the
-proceedings of International Conference on Machine Learning
-(ICML)</EM>, pp. 282-289, 2001.  </p>
-</li>
-<li><p> Mark Schmidt. UGM: A
-Matlab toolbox for probabilistic undirected graphical
+<p>J. Lafferty, A. McCallum, and F. Pereira. Conditional
+random fields: Probabilistic models for segmenting and
+labeling sequence data. In <EM>the proceedings of
+International Conference on Machine Learning (ICML)</EM>, pp.
+282-289, 2001.
+</p>
+<p>Mark Schmidt. UGM: Matlab code for undirected graphical
 models.
-<a href="http://www.cs.ubc.ca/~schmidtm/Software/UGM.html">http://www.cs.ubc.ca/~schmidtm/Software/UGM.html</a> </p>
-</li></ul>
-
+<a href="http://www.di.ens.fr/~mschmidt/Software/UGM.html">http://www.di.ens.fr/~mschmidt/Software/UGM.html</a>
+</p>
 
 
 <h3>See Also</h3>
@@ -198,10 +202,10 @@ models.
 <pre>
 library(CRF)
 data(Small)
-decode.exact(small.crf)
-infer.exact(small.crf)
-sample.exact(small.crf, 100)
+decode.exact(Small$crf)
+infer.exact(Small$crf)
+sample.exact(Small$crf, 100)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

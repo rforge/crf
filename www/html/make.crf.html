@@ -37,23 +37,23 @@ make.crf(adj.matrix, nstates)
 
 <h3>Details</h3>
 
-<p>The function will generate a empty CRF structure from a
-given adjacent matrix. If the length of <code>nstates</code> is
-less than <code>n.nodes</code>, it will be used repeatly. All
-node and edge potentials are initilized as 1.
+<p>The function will generate an empty CRF from a given
+adjacent matrix. If the length of <code>nstates</code> is less
+than <code>n.nodes</code>, it will be used repeatly. All node and
+edge potentials are initilized as 1.
 </p>
 <p>Since the CRF data are often very huge, CRF is implemented
-by using environment. Therefore, normal assignment will
-only copy the pointer instead of real data. The vairables
-using normal assignment will refer to the exactly same CRF
-data. For complete duplication of the data, please use
+as an environment. The assignment of environments will only
+copy the addresses instead of real data, therefore the
+variables using normal assignment will refer to the exactly
+same CRF. For complete duplication of the data, please use
 <code><a href="duplicate.html">duplicate</a></code>.
 </p>
 
 
 <h3>Value</h3>
 
-<p>The function will return a CRF, which is an environment
+<p>The function will return a new CRF, which is an environment
 with components: </p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>n.nodes</code></td>
@@ -148,5 +148,5 @@ for (i in 1:crf$n.edges)
 }
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

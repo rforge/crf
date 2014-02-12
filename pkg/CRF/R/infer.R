@@ -4,17 +4,18 @@
 #' 
 #' Exact inference for small graphs with brute-force counting 
 #' 
-#' @param crf
+#' @param crf The CRF
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.exact(small.crf)
+#' i <- infer.exact(Small$crf)
 #' 
 #' @export
 infer.exact <- function(crf)
@@ -28,17 +29,18 @@ infer.exact <- function(crf)
 #' 
 #' Exact inference for chain-structured graphs with the forward-backward algorithm 
 #' 
-#' @param crf
+#' @param crf The CRF
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.chain(small.crf)
+#' i <- infer.chain(Small$crf)
 #' 
 #' @export
 infer.chain <- function(crf)
@@ -52,17 +54,18 @@ infer.chain <- function(crf)
 #' 
 #' Exact inference for tree- and forest-structured graphs with sum-product belief propagation 
 #' 
-#' @param crf
+#' @param crf The CRF
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.tree(small.crf)
+#' i <- infer.tree(Small$crf)
 #' 
 #' @export
 infer.tree <- function(crf)
@@ -76,20 +79,21 @@ infer.tree <- function(crf)
 #' 
 #' Conditional inference (takes another inference method as input) 
 #' 
-#' @param crf
-#' @param clamped
-#' @param infer.method
-#' @param ...
+#' @param crf The CRF
+#' @param clamped The vector of fixed values for clamped nodes, 0 for unfixed nodes
+#' @param infer.method The inference method to solve the clamped CRF
+#' @param ... The parameters for \code{infer.method}
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.conditional(small.crf, c(0,1,0,0), infer.exact)
+#' i <- infer.conditional(Small$crf, c(0,1,0,0), infer.exact)
 #' 
 #' @export
 infer.conditional <- function(crf, clamped, infer.method, ...)
@@ -121,19 +125,20 @@ infer.conditional <- function(crf, clamped, infer.method, ...)
 #' 
 #' Exact inference for graphs with a small cutset using cutset conditioning 
 #' 
-#' @param crf
-#' @param cutset
+#' @param crf The CRF
+#' @param cutset A vector of nodes in the cutset
 #' @param engine The underlying engine for cutset decoding, possible values are "default", "none", "exact", "chain", and "tree".
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.cutset(small.crf, c(2))
+#' i <- infer.cutset(Small$crf, c(2))
 #' 
 #' @export
 infer.cutset <- function(crf, cutset, engine = "default")
@@ -153,17 +158,18 @@ infer.cutset <- function(crf, cutset, engine = "default")
 #' 
 #' Exact decoding for low-treewidth graphs using junction trees 
 #' 
-#' @param crf
+#' @param crf The CRF
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.junction(small.crf)
+#' i <- infer.junction(Small$crf)
 #' 
 #' @export
 infer.junction <- function(crf)
@@ -177,19 +183,20 @@ infer.junction <- function(crf)
 #' 
 #' Approximate inference using sampling (takes a sampling method as input) 
 #' 
-#' @param crf
-#' @param sample.method
-#' @param ...
+#' @param crf The CRF
+#' @param sample.method The sampling method
+#' @param ... The parameters for \code{sample.method}
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.sample(small.crf, sample.exact, 10000)
+#' i <- infer.sample(Small$crf, sample.exact, 10000)
 #' 
 #' @export
 infer.sample <- function(crf, sample.method, ...)
@@ -203,20 +210,21 @@ infer.sample <- function(crf, sample.method, ...)
 #' 
 #' Approximate inference using sum-product loopy belief propagation 
 #' 
-#' @param crf
-#' @param max.iter
-#' @param cutoff
-#' @param verbose
+#' @param crf The CRF
+#' @param max.iter The maximum allowed iterations of termination criteria
+#' @param cutoff The convergence cutoff of termination criteria
+#' @param verbose Non-negative integer to control the tracing informtion in algorithm
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.lbp(small.crf)
+#' i <- infer.lbp(Small$crf)
 #' 
 #' @export
 infer.lbp <- function(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
@@ -230,20 +238,21 @@ infer.lbp <- function(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)
 #' 
 #' Approximate inference using sum-product tree-reweighted belief propagation
 #' 
-#' @param crf
-#' @param max.iter
-#' @param cutoff
-#' @param verbose
+#' @param crf The CRF
+#' @param max.iter The maximum allowed iterations of termination criteria
+#' @param cutoff The convergence cutoff of termination criteria
+#' @param verbose Non-negative integer to control the tracing informtion in algorithm
 #' @return This function will return a list with components:
 #'   \item{node.bel}{Node belief. It is a matrix with \code{crf$n.nodes} rows and \code{crf$max.state} columns.}
 #'   \item{edge.bel}{Edge belief. It is a list of matrices. The size of list is \code{crf$n.edges} and 
 #'     the matrix \code{i} has \code{crf$n.states[crf$edges[i,1]]} rows and \code{crf$n.states[crf$edges[i,2]]} columns.}
 #'   \item{logZ}{The logarithmic value of CRF normalization factor Z.}
+#' 
 #' @examples
 #' 
 #' library(CRF)
 #' data(Small)
-#' i <- infer.trbp(small.crf)
+#' i <- infer.trbp(Small$crf)
 #' 
 #' @export
 infer.trbp <- function(crf, max.iter = 10000, cutoff = 1e-4, verbose = 0)

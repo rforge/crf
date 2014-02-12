@@ -5,9 +5,9 @@
 sample.chain(crf, size)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{size}{}
+  \item{size}{The sample size}
 }
 \value{
 This function will return a matrix with \code{size} rows
@@ -24,6 +24,6 @@ forward-filter backward-sample algorithm
 \examples{
 library(CRF)
 data(Small)
-s <- sample.chain(small.crf, 100)
+s <- sample.chain(Small$crf, 100)
 }
 

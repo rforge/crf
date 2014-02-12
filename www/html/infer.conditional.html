@@ -26,15 +26,21 @@ infer.conditional(crf, clamped, infer.method, ...)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>clamped</code></td>
 <td>
+<p>The vector of fixed values for clamped
+nodes, 0 for unfixed nodes</p>
 </td></tr>
 <tr valign="top"><td><code>infer.method</code></td>
 <td>
+<p>The inference method to solve the
+clamped CRF</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
+<p>The parameters for <code>infer.method</code></p>
 </td></tr>
 </table>
 
@@ -76,8 +82,8 @@ factor Z.</p>
 <pre>
 library(CRF)
 data(Small)
-i &lt;- infer.conditional(small.crf, c(0,1,0,0), infer.exact)
+i &lt;- infer.conditional(Small$crf, c(0,1,0,0), infer.exact)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

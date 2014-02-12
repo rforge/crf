@@ -5,9 +5,9 @@
 sample.tree(crf, size)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{size}{}
+  \item{size}{The sample size}
 }
 \value{
 This function will return a matrix with \code{size} rows
@@ -24,6 +24,6 @@ sum-product belief propagation and backward-sampling
 \examples{
 library(CRF)
 data(Small)
-s <- sample.tree(small.crf, 100)
+s <- sample.tree(Small$crf, 100)
 }
 

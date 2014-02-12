@@ -5,13 +5,15 @@
 infer.conditional(crf, clamped, infer.method, ...)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{clamped}{}
+  \item{clamped}{The vector of fixed values for clamped
+  nodes, 0 for unfixed nodes}
 
-  \item{infer.method}{}
+  \item{infer.method}{The inference method to solve the
+  clamped CRF}
 
-  \item{...}{}
+  \item{...}{The parameters for \code{infer.method}}
 }
 \value{
 This function will return a list with components:
@@ -34,6 +36,6 @@ input)
 \examples{
 library(CRF)
 data(Small)
-i <- infer.conditional(small.crf, c(0,1,0,0), infer.exact)
+i <- infer.conditional(Small$crf, c(0,1,0,0), infer.exact)
 }
 

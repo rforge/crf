@@ -5,7 +5,7 @@
 infer.junction(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return a list with components:
@@ -28,6 +28,6 @@ trees
 \examples{
 library(CRF)
 data(Small)
-i <- infer.junction(small.crf)
+i <- infer.junction(Small$crf)
 }
 

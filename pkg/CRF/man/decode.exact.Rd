@@ -5,7 +5,7 @@
 decode.exact(crf)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 }
 \value{
 This function will return the most likely configuration,
@@ -20,6 +20,6 @@ Exact decoding for small graphs with brute-force search
 \examples{
 library(CRF)
 data(Small)
-d <- decode.exact(small.crf)
+d <- decode.exact(Small$crf)
 }
 

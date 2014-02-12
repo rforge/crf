@@ -26,15 +26,22 @@ infer.trbp(crf, max.iter = 10000, cutoff = 1e-04, verbose = 0)
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>max.iter</code></td>
 <td>
+<p>The maximum allowed iterations of
+termination criteria</p>
 </td></tr>
 <tr valign="top"><td><code>cutoff</code></td>
 <td>
+<p>The convergence cutoff of termination
+criteria</p>
 </td></tr>
 <tr valign="top"><td><code>verbose</code></td>
 <td>
+<p>Non-negative integer to control the
+tracing informtion in algorithm</p>
 </td></tr>
 </table>
 
@@ -76,8 +83,8 @@ factor Z.</p>
 <pre>
 library(CRF)
 data(Small)
-i &lt;- infer.trbp(small.crf)
+i &lt;- infer.trbp(Small$crf)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

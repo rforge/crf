@@ -88,27 +88,30 @@ low-treewidth graphs using junction trees \item
 single-site Gibbs sampler }
 
 Training: Given data, computing the most likely estimates
-of the parameters
+of the parameters \itemize{ \item \code{\link{train.crf}}
+Train CRF model \item \code{\link{train.mrf}} Train MRF
+model }
 }
 \examples{
 library(CRF)
 data(Small)
-decode.exact(small.crf)
-infer.exact(small.crf)
-sample.exact(small.crf, 100)
+decode.exact(Small$crf)
+infer.exact(Small$crf)
+sample.exact(Small$crf, 100)
 }
 \author{
 Ling-Yun Wu \email{wulingyun@gmail.com}
 }
 \references{
-\itemize{ \item J. Lafferty, A. McCallum, and F. Pereira.
-Conditional random fields: Probabilistic models for
-segmenting and labeling sequence data. In \emph{the
-proceedings of International Conference on Machine Learning
-(ICML)}, pp. 282-289, 2001.  \item Mark Schmidt. UGM: A
-Matlab toolbox for probabilistic undirected graphical
+J. Lafferty, A. McCallum, and F. Pereira. Conditional
+random fields: Probabilistic models for segmenting and
+labeling sequence data. In \emph{the proceedings of
+International Conference on Machine Learning (ICML)}, pp.
+282-289, 2001.
+
+Mark Schmidt. UGM: Matlab code for undirected graphical
 models.
-\url{http://www.cs.ubc.ca/~schmidtm/Software/UGM.html} }
+\url{http://www.di.ens.fr/~mschmidt/Software/UGM.html}
 }
 \seealso{
 \code{\link{make.crf}}

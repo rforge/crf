@@ -6,13 +6,14 @@ sample.gibbs(crf, size, burn.in = 1000, start = apply(crf$node.pot, 1,
   which.max))
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{size}{}
+  \item{size}{The sample size}
 
-  \item{burn.in}{}
+  \item{burn.in}{The number of samples at the beginning
+  that will be discarded}
 
-  \item{start}{}
+  \item{start}{An initial configuration}
 }
 \value{
 This function will return a matrix with \code{size} rows
@@ -28,6 +29,6 @@ Approximate sampling using a single-site Gibbs sampler
 \examples{
 library(CRF)
 data(Small)
-s <- sample.gibbs(small.crf, 100)
+s <- sample.gibbs(Small$crf, 100)
 }
 

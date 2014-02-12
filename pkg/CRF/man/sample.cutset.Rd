@@ -5,11 +5,11 @@
 sample.cutset(crf, size, cutset, engine = "default")
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
-  \item{size}{}
+  \item{size}{The sample size}
 
-  \item{cutset}{}
+  \item{cutset}{A vector of nodes in the cutset}
 
   \item{engine}{The underlying engine for cutset sampling,
   possible values are "default", "none", "exact", "chain",
@@ -30,6 +30,6 @@ conditioning
 \examples{
 library(CRF)
 data(Small)
-s <- sample.cutset(small.crf, 100, c(2))
+s <- sample.cutset(Small$crf, 100, c(2))
 }
 

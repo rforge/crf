@@ -18,7 +18,7 @@
 
 <pre>
 train.crf(crf, instances, node.fea = NaN, edge.fea = NaN, node.ext = NaN,
-  edge.ext = NaN, trace = 0)
+  edge.ext = NaN, nll = crf.nll, trace = 0)
 </pre>
 
 
@@ -27,24 +27,39 @@ train.crf(crf, instances, node.fea = NaN, edge.fea = NaN, node.ext = NaN,
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>instances</code></td>
 <td>
-</td></tr>
-<tr valign="top"><td><code>trace</code></td>
-<td>
+<p>The training data matrix of CRF model</p>
 </td></tr>
 <tr valign="top"><td><code>node.fea</code></td>
 <td>
+<p>The list of node features</p>
 </td></tr>
 <tr valign="top"><td><code>edge.fea</code></td>
 <td>
+<p>The list of edge features</p>
 </td></tr>
 <tr valign="top"><td><code>node.ext</code></td>
 <td>
+<p>The list of extended information of node
+features</p>
 </td></tr>
 <tr valign="top"><td><code>edge.ext</code></td>
 <td>
+<p>The list of extended information of edge
+features</p>
+</td></tr>
+<tr valign="top"><td><code>nll</code></td>
+<td>
+<p>The function to calculate negative log
+likelihood</p>
+</td></tr>
+<tr valign="top"><td><code>trace</code></td>
+<td>
+<p>Non-negative integer to control the tracing
+informtion of the optimization process</p>
 </td></tr>
 </table>
 
@@ -53,12 +68,27 @@ train.crf(crf, instances, node.fea = NaN, edge.fea = NaN, node.ext = NaN,
 
 <p>This function train the CRF model.
 </p>
+<p>In the training data matrix <code>instances</code>, each row is
+an instance and each column corresponds a node in CRF. The
+variables <code>node.fea</code>, <code>edge.fea</code>,
+<code>node.ext</code>, <code>edge.ext</code> are lists of length equal
+to the number of instances, and their elements are defined
+as in <code><a href="crf.update.html">crf.update</a></code> respectively.
+</p>
 
 
 <h3>Value</h3>
 
-<p>This function will return the same CRF.
+<p>This function will directly modify the CRF and return the
+same CRF.
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+
+<h3>See Also</h3>
+
+<p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="crf.nll.html">crf.nll</a></code>,
+<code><a href="make.crf.html">make.crf</a></code>
+</p>
+
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

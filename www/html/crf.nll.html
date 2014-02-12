@@ -27,37 +27,58 @@ crf.nll(par, crf, instances, node.fea = NaN, edge.fea = NaN,
 <table summary="R argblock">
 <tr valign="top"><td><code>crf</code></td>
 <td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>par</code></td>
 <td>
+<p>The parameter vector of CRF</p>
 </td></tr>
 <tr valign="top"><td><code>instances</code></td>
 <td>
+<p>The training data matrix of CRF model</p>
 </td></tr>
 <tr valign="top"><td><code>node.fea</code></td>
 <td>
+<p>The list of node features</p>
 </td></tr>
 <tr valign="top"><td><code>edge.fea</code></td>
 <td>
+<p>The list of edge features</p>
 </td></tr>
 <tr valign="top"><td><code>node.ext</code></td>
 <td>
+<p>The list of extended information of node
+features</p>
 </td></tr>
 <tr valign="top"><td><code>edge.ext</code></td>
 <td>
+<p>The list of extended information of edge
+features</p>
 </td></tr>
 <tr valign="top"><td><code>infer.method</code></td>
 <td>
+<p>The inference method used to compute
+the likelihood</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
+<p>Other parameters need by the inference method</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>Calculate the negative log likelihood of CRF model
+<p>This function calculates the negative log likelihood of CRF
+model as well as the gradient. This function is intended to
+be called by optimization algorithm in training process.
+</p>
+<p>In the training data matrix <code>instances</code>, each row is
+an instance and each column corresponds a node in CRF. The
+variables <code>node.fea</code>, <code>edge.fea</code>,
+<code>node.ext</code>, <code>edge.ext</code> are lists of length equal
+to the number of instances, and their elements are defined
+as in <code><a href="crf.update.html">crf.update</a></code> respectively.
 </p>
 
 
@@ -67,5 +88,11 @@ crf.nll(par, crf, instances, node.fea = NaN, edge.fea = NaN,
 log-likelihood.
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-4 <a href="00Index.html">Index</a>]</div>
+
+<h3>See Also</h3>
+
+<p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="train.crf.html">train.crf</a></code>
+</p>
+
+<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
 </body></html>

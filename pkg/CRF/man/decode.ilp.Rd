@@ -5,7 +5,7 @@
 decode.ilp(crf, lp.rounding = FALSE)
 }
 \arguments{
-  \item{crf}{}
+  \item{crf}{The CRF}
 
   \item{lp.rounding}{Boolean variable to indicate whether
   LP rounding is need.}
@@ -24,6 +24,6 @@ formulation and approximate using LP relaxation
 \examples{
 library(CRF)
 data(Small)
-d <- decode.ilp(small.crf)
+d <- decode.ilp(Small$crf)
 }
 
