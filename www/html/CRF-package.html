@@ -169,6 +169,40 @@ Train CRF model </p>
 model </p>
 </li></ul>
 
+<p>Tools: Tools for building and manipulating CRF data
+</p>
+ <ul>
+<li> <p><code><a href="make.crf.html">make.crf</a></code> Generate CRF from
+the adjacent matrix </p>
+</li>
+<li> <p><code><a href="make.features.html">make.features</a></code> Make
+the data structure of CRF features </p>
+</li>
+<li>
+<p><code><a href="make.par.html">make.par</a></code> Make the data structure of CRF
+parameters </p>
+</li>
+<li> <p><code><a href="duplicate.crf.html">duplicate.crf</a></code> Duplicate an
+existing CRF </p>
+</li>
+<li> <p><code><a href="clamp.crf.html">clamp.crf</a></code> Generate clamped
+CRF by fixing the states of some nodes </p>
+</li>
+<li>
+<p><code><a href="clamp.reset.html">clamp.reset</a></code> Reset clamped CRF by changing the
+states of clamped nodes </p>
+</li>
+<li> <p><code><a href="sub.crf.html">sub.crf</a></code>
+Generate sub CRF by selecting some nodes </p>
+</li>
+<li>
+<p><code><a href="mrf.update.html">mrf.update</a></code> Update node and edge potentials of
+MRF model </p>
+</li>
+<li> <p><code><a href="crf.update.html">crf.update</a></code> Update node and
+edge potentials of CRF model </p>
+</li></ul>
+
 
 
 <h3>Author(s)</h3>
@@ -191,12 +225,6 @@ models.
 </p>
 
 
-<h3>See Also</h3>
-
-<p><code><a href="make.crf.html">make.crf</a></code>
-</p>
-
-
 <h3>Examples</h3>
 
 <pre>
@@ -207,5 +235,5 @@ infer.exact(Small$crf)
 sample.exact(Small$crf, 100)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-5 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
 </body></html>
