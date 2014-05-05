@@ -17,7 +17,7 @@
 <h3>Usage</h3>
 
 <pre>
-make.crf(adj.matrix, nstates)
+make.crf(adj.matrix = NULL, n.states = 2, n.nodes = 2)
 </pre>
 
 
@@ -26,11 +26,17 @@ make.crf(adj.matrix, nstates)
 <table summary="R argblock">
 <tr valign="top"><td><code>adj.matrix</code></td>
 <td>
-<p>The adjacent matrix of CRF network</p>
+<p>The adjacent matrix of CRF network.</p>
 </td></tr>
-<tr valign="top"><td><code>nstates</code></td>
+<tr valign="top"><td><code>n.states</code></td>
 <td>
-<p>The state numbers of nodes</p>
+<p>The state numbers of nodes.</p>
+</td></tr>
+<tr valign="top"><td><code>n.nodes</code></td>
+<td>
+<p>The number of nodes, which is only used to
+generate linear chain CRF when <code>adj.matrix</code> is
+NULL.</p>
 </td></tr>
 </table>
 
@@ -148,5 +154,5 @@ for (i in 1:crf$n.edges)
 }
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-6 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
 </body></html>

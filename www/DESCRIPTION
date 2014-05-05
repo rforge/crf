@@ -1,16 +1,17 @@
 Package: CRF
-Version: 0.3-6
+Version: 0.3-7
 Title: CRF - Conditional Random Fields
-Description: This package implements modelling and computational tools for
+Description: This package implements modeling and computational tools for
     conditional random fields model (CRF) as well as other probabilistic
-    undirected graphical models (UGM) of discrete data with pairwise (and
-    unary) potentials.
+    undirected graphical models (UGM) of discrete data with pairwise and
+    unary potentials.
 Authors@R: c(person("Ling-Yun", "Wu", role = c("aut", "cre"), email =
     "wulingyun@gmail.com"))
-Depends: R (>= 2.12.0)
-Imports: Rglpk (>= 0.3-5)
+ByteCompile: TRUE
+Depends:
+    R (>= 2.12.0)
+Imports:
+    Rglpk (>= 0.3-5),
+    Matrix (>= 1.1-2)
 License: GPL (>= 2)
 URL: http://r-forge.r-project.org/projects/crf/
-Author: Ling-Yun Wu [aut, cre]
-Maintainer: Ling-Yun Wu <wulingyun@gmail.com>
-Built: R 3.0.2; x86_64-apple-darwin10.8.0; 2014-02-14 07:01:37 UTC; unix
