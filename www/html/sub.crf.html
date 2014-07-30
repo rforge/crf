@@ -37,18 +37,18 @@ sub.crf(crf, subset)
 
 <h3>Details</h3>
 
-<p>The function will generate a new CRF from a given CRF by
-selecting some nodes. The vector <code>subset</code> contains the
+<p>The function will generate a new CRF from a given CRF
+by selecting some nodes. The vector <code>subset</code> contains the
 node ids selected to generate the new CRF. Unlike
-<code><a href="clamp.crf.html">clamp.crf</a></code>, the potentials of remainning nodes
-and edges are untouched.
+<code><a href="clamp.crf.html">clamp.crf</a></code>, the potentials of remainning nodes and edges are
+untouched.
 </p>
 
 
 <h3>Value</h3>
 
-<p>The function will return a new CRF with additional
-components: </p>
+<p>The function will return a new CRF with additional components:
+</p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>original</code></td>
 <td>
@@ -56,21 +56,19 @@ components: </p>
 </td></tr>
 <tr valign="top"><td><code>node.id</code></td>
 <td>
-<p>The vector of the original node ids for
-nodes in the new CRF.</p>
-</td></tr> <tr valign="top"><td><code>node.map</code></td>
+<p>The vector of the original node ids for nodes in the new CRF.</p>
+</td></tr>
+<tr valign="top"><td><code>node.map</code></td>
 <td>
-<p>The vector of the
-new node ids for nodes in the original CRF.</p>
+<p>The vector of the new node ids for nodes in the original CRF.</p>
 </td></tr>
 <tr valign="top"><td><code>edge.id</code></td>
 <td>
-<p>The vector of the original edge ids for
-edges in the new CRF.</p>
-</td></tr> <tr valign="top"><td><code>edge.map</code></td>
+<p>The vector of the original edge ids for edges in the new CRF.</p>
+</td></tr>
+<tr valign="top"><td><code>edge.map</code></td>
 <td>
-<p>The vector of the
-new edge ids for edges in the original CRF.</p>
+<p>The vector of the new edge ids for edges in the original CRF.</p>
 </td></tr>
 </table>
 
@@ -89,5 +87,5 @@ data(Small)
 crf &lt;- sub.crf(Small$crf, c(2, 3))
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

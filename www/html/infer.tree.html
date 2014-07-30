@@ -33,8 +33,7 @@ infer.tree(crf)
 
 <h3>Details</h3>
 
-<p>Exact inference for tree- and forest-structured graphs with
-sum-product belief propagation
+<p>Exact inference for tree- and forest-structured graphs with sum-product belief propagation
 </p>
 
 
@@ -45,20 +44,16 @@ sum-product belief propagation
 <table summary="R valueblock">
 <tr valign="top"><td><code>node.bel</code></td>
 <td>
-<p>Node belief. It is a matrix with
-<code>crf$n.nodes</code> rows and <code>crf$max.state</code> columns.</p>
+<p>Node belief. It is a matrix with <code>crf$n.nodes</code> rows and <code>crf$max.state</code> columns.</p>
 </td></tr>
 <tr valign="top"><td><code>edge.bel</code></td>
 <td>
-<p>Edge belief. It is a list of matrices. The
-size of list is <code>crf$n.edges</code> and the matrix <code>i</code>
-has <code>crf$n.states[crf$edges[i,1]]</code> rows and
-<code>crf$n.states[crf$edges[i,2]]</code> columns.</p>
+<p>Edge belief. It is a list of matrices. The size of list is <code>crf$n.edges</code> and
+the matrix <code>i</code> has <code>crf$n.states[crf$edges[i,1]]</code> rows and <code>crf$n.states[crf$edges[i,2]]</code> columns.</p>
 </td></tr>
 <tr valign="top"><td><code>logZ</code></td>
 <td>
-<p>The logarithmic value of CRF normalization
-factor Z.</p>
+<p>The logarithmic value of CRF normalization factor Z.</p>
 </td></tr>
 </table>
 
@@ -71,5 +66,5 @@ data(Small)
 i &lt;- infer.tree(Small$crf)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -35,29 +35,24 @@ decode.cutset(crf, cutset, engine = "default", start = apply(crf$node.pot,
 </td></tr>
 <tr valign="top"><td><code>engine</code></td>
 <td>
-<p>The underlying engine for cutset decoding,
-possible values are &quot;default&quot;, &quot;none&quot;, &quot;exact&quot;, &quot;chain&quot;,
-and &quot;tree&quot;.</p>
+<p>The underlying engine for cutset decoding, possible values are &quot;default&quot;, &quot;none&quot;, &quot;exact&quot;, &quot;chain&quot;, and &quot;tree&quot;.</p>
 </td></tr>
 <tr valign="top"><td><code>start</code></td>
 <td>
-<p>An initial configuration, a good start will
-significantly reduce the seraching time</p>
+<p>An initial configuration, a good start will significantly reduce the seraching time</p>
 </td></tr>
 </table>
 
 
 <h3>Details</h3>
 
-<p>Exact decoding for graphs with a small cutset using cutset
-conditioning
+<p>Exact decoding for graphs with a small cutset using cutset conditioning
 </p>
 
 
 <h3>Value</h3>
 
-<p>This function will return the most likely configuration,
-which is a vector of length <code>crf$n.nodes</code>.
+<p>This function will return the most likely configuration, which is a vector of length <code>crf$n.nodes</code>.
 </p>
 
 
@@ -69,5 +64,5 @@ data(Small)
 d &lt;- decode.cutset(Small$crf, c(2))
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

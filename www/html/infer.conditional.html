@@ -30,13 +30,11 @@ infer.conditional(crf, clamped, infer.method, ...)
 </td></tr>
 <tr valign="top"><td><code>clamped</code></td>
 <td>
-<p>The vector of fixed values for clamped
-nodes, 0 for unfixed nodes</p>
+<p>The vector of fixed values for clamped nodes, 0 for unfixed nodes</p>
 </td></tr>
 <tr valign="top"><td><code>infer.method</code></td>
 <td>
-<p>The inference method to solve the
-clamped CRF</p>
+<p>The inference method to solve the clamped CRF</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -47,8 +45,7 @@ clamped CRF</p>
 
 <h3>Details</h3>
 
-<p>Conditional inference (takes another inference method as
-input)
+<p>Conditional inference (takes another inference method as input)
 </p>
 
 
@@ -59,20 +56,16 @@ input)
 <table summary="R valueblock">
 <tr valign="top"><td><code>node.bel</code></td>
 <td>
-<p>Node belief. It is a matrix with
-<code>crf$n.nodes</code> rows and <code>crf$max.state</code> columns.</p>
+<p>Node belief. It is a matrix with <code>crf$n.nodes</code> rows and <code>crf$max.state</code> columns.</p>
 </td></tr>
 <tr valign="top"><td><code>edge.bel</code></td>
 <td>
-<p>Edge belief. It is a list of matrices. The
-size of list is <code>crf$n.edges</code> and the matrix <code>i</code>
-has <code>crf$n.states[crf$edges[i,1]]</code> rows and
-<code>crf$n.states[crf$edges[i,2]]</code> columns.</p>
+<p>Edge belief. It is a list of matrices. The size of list is <code>crf$n.edges</code> and
+the matrix <code>i</code> has <code>crf$n.states[crf$edges[i,1]]</code> rows and <code>crf$n.states[crf$edges[i,2]]</code> columns.</p>
 </td></tr>
 <tr valign="top"><td><code>logZ</code></td>
 <td>
-<p>The logarithmic value of CRF normalization
-factor Z.</p>
+<p>The logarithmic value of CRF normalization factor Z.</p>
 </td></tr>
 </table>
 
@@ -85,5 +78,5 @@ data(Small)
 i &lt;- infer.conditional(Small$crf, c(0,1,0,0), infer.exact)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

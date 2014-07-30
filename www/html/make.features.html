@@ -41,43 +41,36 @@ make.features(crf, n.nf = 1, n.ef = 1)
 
 <h3>Details</h3>
 
-<p>This function makes the data structure of features need for
-modeling and training CRF.
+<p>This function makes the data structure of features need for modeling and training CRF.
 </p>
-<p>The parameters <code>n.nf</code> and <code>n.ef</code> specify the
-number of node and edge features, respectively.
+<p>The parameters <code>n.nf</code> and <code>n.ef</code> specify the number of node and edge features,
+respectively.
 </p>
-<p>The objects <code>node.par</code> and <code>edge.par</code> define the
-corresponding parameters used with each feature.
-<code>node.par</code> is a 3-dimensional arrays, and element
-<code>node.par[n,i,f]</code> is the index of parameter associated
-with the corresponding node potential <code>node.pot[n,i]</code>
-and node feature <code>f</code>. <code>edge.par</code> is a list of
-3-dimensional arrays, and element
-<code>edge.par[[e]][i,j,f]</code> is the index of parameter
-associated with the corresponding edge potential
-<code>edge.pot[[e]][i,j]</code> and edge feature <code>f</code>. The
-value 0 is used to indicate the corresponding node or edge
-potential does not depend on that feature.
+<p>The objects <code>node.par</code> and <code>edge.par</code> define the corresponding
+parameters used with each feature. <code>node.par</code> is a 3-dimensional arrays,
+and element <code>node.par[n,i,f]</code> is the index of parameter associated with the
+corresponding node potential <code>node.pot[n,i]</code> and node feature <code>f</code>.
+<code>edge.par</code> is a list of 3-dimensional arrays, and element
+<code>edge.par[[e]][i,j,f]</code> is the index of parameter associated with the
+corresponding edge potential <code>edge.pot[[e]][i,j]</code> and edge feature <code>f</code>.
+The value 0 is used to indicate the corresponding node or edge potential
+does not depend on that feature.
 </p>
-<p>For detail of calculation of node and edge potentials from
-features and parameters, please see
-<code><a href="crf.update.html">crf.update</a></code>.
+<p>For detail of calculation of node and edge potentials from features and parameters,
+please see <code><a href="crf.update.html">crf.update</a></code>.
 </p>
 
 
 <h3>Value</h3>
 
-<p>This function will directly modify the CRF and return the
-same CRF.
+<p>This function will directly modify the CRF and return the same CRF.
 </p>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="make.par.html">make.par</a></code>,
-<code><a href="make.crf.html">make.crf</a></code>
+<p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="make.par.html">make.par</a></code>, <code><a href="make.crf.html">make.crf</a></code>
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

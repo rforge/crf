@@ -34,13 +34,11 @@ sample.conditional(crf, size, clamped, sample.method, ...)
 </td></tr>
 <tr valign="top"><td><code>clamped</code></td>
 <td>
-<p>The vector of fixed values for clamped
-nodes, 0 for unfixed nodes</p>
+<p>The vector of fixed values for clamped nodes, 0 for unfixed nodes</p>
 </td></tr>
 <tr valign="top"><td><code>sample.method</code></td>
 <td>
-<p>The sampling method to solve the
-clamped CRF</p>
+<p>The sampling method to solve the clamped CRF</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -51,16 +49,14 @@ clamped CRF</p>
 
 <h3>Details</h3>
 
-<p>Conditional sampling (takes another sampling method as
-input)
+<p>Conditional sampling (takes another sampling method as input)
 </p>
 
 
 <h3>Value</h3>
 
-<p>This function will return a matrix with <code>size</code> rows
-and <code>crf$n.nodes</code> columns, in which each row is a
-sampled configuration.
+<p>This function will return a matrix with <code>size</code> rows and <code>crf$n.nodes</code> columns,
+in which each row is a sampled configuration.
 </p>
 
 
@@ -72,5 +68,5 @@ data(Small)
 s &lt;- sample.conditional(Small$crf, 100, c(0,1,0,0), sample.exact)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

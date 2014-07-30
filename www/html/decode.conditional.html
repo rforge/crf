@@ -30,13 +30,11 @@ decode.conditional(crf, clamped, decode.method, ...)
 </td></tr>
 <tr valign="top"><td><code>clamped</code></td>
 <td>
-<p>The vector of fixed values for clamped
-nodes, 0 for unfixed nodes</p>
+<p>The vector of fixed values for clamped nodes, 0 for unfixed nodes</p>
 </td></tr>
 <tr valign="top"><td><code>decode.method</code></td>
 <td>
-<p>The decoding method to solve clamped
-CRF</p>
+<p>The decoding method to solve clamped CRF</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -47,15 +45,13 @@ CRF</p>
 
 <h3>Details</h3>
 
-<p>Conditional decoding (takes another decoding method as
-input)
+<p>Conditional decoding (takes another decoding method as input)
 </p>
 
 
 <h3>Value</h3>
 
-<p>This function will return the most likely configuration,
-which is a vector of length <code>crf$n.nodes</code>.
+<p>This function will return the most likely configuration, which is a vector of length <code>crf$n.nodes</code>.
 </p>
 
 
@@ -67,5 +63,5 @@ data(Small)
 d &lt;- decode.conditional(Small$crf, c(0,1,0,0), decode.exact)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

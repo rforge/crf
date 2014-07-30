@@ -38,18 +38,17 @@ clamp.crf(crf, clamped)
 <h3>Details</h3>
 
 <p>The function will generate a clamped CRF from a given CRF
-by fixing the states of some nodes. The vector
-<code>clamped</code> contains the desired state for each node
-while zero means the state is not fixed. The node and edge
-potentials are updated to the conditional potentials based
-on the clamped vector.
+by fixing the states of some nodes. The vector <code>clamped</code>
+contains the desired state for each node while zero means the state is not
+fixed. The node and edge potentials are updated to the conditional
+potentials based on the clamped vector.
 </p>
 
 
 <h3>Value</h3>
 
-<p>The function will return a new CRF with additional
-components: </p>
+<p>The function will return a new CRF with additional components:
+</p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>original</code></td>
 <td>
@@ -61,29 +60,26 @@ components: </p>
 </td></tr>
 <tr valign="top"><td><code>node.id</code></td>
 <td>
-<p>The vector of the original node ids for
-nodes in the new CRF.</p>
-</td></tr> <tr valign="top"><td><code>node.map</code></td>
+<p>The vector of the original node ids for nodes in the new CRF.</p>
+</td></tr>
+<tr valign="top"><td><code>node.map</code></td>
 <td>
-<p>The vector of the
-new node ids for nodes in the original CRF.</p>
+<p>The vector of the new node ids for nodes in the original CRF.</p>
 </td></tr>
 <tr valign="top"><td><code>edge.id</code></td>
 <td>
-<p>The vector of the original edge ids for
-edges in the new CRF.</p>
-</td></tr> <tr valign="top"><td><code>edge.map</code></td>
+<p>The vector of the original edge ids for edges in the new CRF.</p>
+</td></tr>
+<tr valign="top"><td><code>edge.map</code></td>
 <td>
-<p>The vector of the
-new edge ids for edges in the original CRF.</p>
+<p>The vector of the new edge ids for edges in the original CRF.</p>
 </td></tr>
 </table>
 
 
 <h3>See Also</h3>
 
-<p><code><a href="make.crf.html">make.crf</a></code>, <code><a href="sub.crf.html">sub.crf</a></code>,
-<code><a href="clamp.reset.html">clamp.reset</a></code>
+<p><code><a href="make.crf.html">make.crf</a></code>, <code><a href="sub.crf.html">sub.crf</a></code>, <code><a href="clamp.reset.html">clamp.reset</a></code>
 </p>
 
 
@@ -95,5 +91,5 @@ data(Small)
 crf &lt;- clamp.crf(Small$crf, c(0, 0, 1, 1))
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

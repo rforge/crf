@@ -16,190 +16,161 @@
 
 <h3>Details</h3>
 
-<p>CRF is R package for various computational tasks of
-conditional random fields as well as other probabilistic
-undirected graphical models of discrete data with pairwise
-and unary potentials. The decoding/inference/sampling tasks
-are implemented for general discrete undirected graphical
-models with pairwise potentials. The training task is less
-general, focusing on conditional random fields with
-log-linear potentials and a fixed structure. The code is
-written entirely in R and C++. The initial version is
-ported from UGM written by Mark Schmidt.
+<p>CRF is R package for various computational tasks of conditional random
+fields as well as other probabilistic undirected graphical models of
+discrete data with pairwise and unary potentials. The
+decoding/inference/sampling tasks are implemented for general discrete
+undirected graphical models with pairwise potentials. The training task is
+less general, focusing on conditional random fields with log-linear
+potentials and a fixed structure. The code is written entirely in R and C++.
+The initial version is ported from UGM written by Mark Schmidt.
 </p>
-<p>Decoding: Computing the most likely configuration </p>
+<p>Decoding: Computing the most likely configuration
+</p>
 
 <ul>
-<li> <p><code><a href="decode.exact.html">decode.exact</a></code> Exact decoding for small
-graphs with brute-force search </p>
-</li>
-<li>
-<p><code><a href="decode.chain.html">decode.chain</a></code> Exact decoding for
-chain-structured graphs with the Viterbi algorithm </p>
-</li>
-<li>
-<p><code><a href="decode.tree.html">decode.tree</a></code> Exact decoding for tree- and
-forest-structured graphs with max-product belief
-propagation </p>
-</li>
-<li> <p><code><a href="decode.conditional.html">decode.conditional</a></code>
-Conditional decoding (takes another decoding method as
-input) </p>
-</li>
-<li> <p><code><a href="decode.cutset.html">decode.cutset</a></code> Exact decoding for
-graphs with a small cutset using cutset conditioning </p>
-</li>
-<li>
-<p><code><a href="decode.junction.html">decode.junction</a></code> Exact decoding for
-low-treewidth graphs using junction trees </p>
-</li>
-<li>
-<p><code><a href="decode.sample.html">decode.sample</a></code> Approximate decoding using
-sampling (takes a sampling method as input) </p>
-</li>
-<li>
-<p><code><a href="decode.marginal.html">decode.marginal</a></code> Approximate decoding using
-inference (takes an inference method as input) </p>
-</li>
-<li>
-<p><code><a href="decode.lbp.html">decode.lbp</a></code> Approximate decoding using
-max-product loopy belief propagation </p>
-</li>
-<li>
-<p><code><a href="decode.trbp.html">decode.trbp</a></code> Approximate decoding using
-max-product tree-reweighted belief propagtion </p>
-</li>
-<li>
-<p><code><a href="decode.greedy.html">decode.greedy</a></code> Approximate decoding with
-greedy algorithm </p>
-</li>
-<li> <p><code><a href="decode.icm.html">decode.icm</a></code> Approximate
-decoding with the iterated conditional modes algorithm
+<li> <p><code><a href="decode.exact.html">decode.exact</a></code> Exact decoding for small graphs with brute-force search
 </p>
 </li>
-<li> <p><code><a href="decode.block.html">decode.block</a></code> Approximate decoding with
-the block iterated conditional modes algorithm </p>
+<li> <p><code><a href="decode.chain.html">decode.chain</a></code> Exact decoding for chain-structured graphs with the Viterbi algorithm
+</p>
 </li>
-<li>
-<p><code><a href="decode.ilp.html">decode.ilp</a></code> Exact decoding with an integer
-linear programming formulation and approximate using LP
-relaxation </p>
+<li> <p><code><a href="decode.tree.html">decode.tree</a></code> Exact decoding for tree- and forest-structured graphs with max-product belief propagation
+</p>
+</li>
+<li> <p><code><a href="decode.conditional.html">decode.conditional</a></code> Conditional decoding (takes another decoding method as input)
+</p>
+</li>
+<li> <p><code><a href="decode.cutset.html">decode.cutset</a></code> Exact decoding for graphs with a small cutset using cutset conditioning
+</p>
+</li>
+<li> <p><code><a href="decode.junction.html">decode.junction</a></code> Exact decoding for low-treewidth graphs using junction trees
+</p>
+</li>
+<li> <p><code><a href="decode.sample.html">decode.sample</a></code> Approximate decoding using sampling (takes a sampling method as input)
+</p>
+</li>
+<li> <p><code><a href="decode.marginal.html">decode.marginal</a></code> Approximate decoding using inference (takes an inference method as input)
+</p>
+</li>
+<li> <p><code><a href="decode.lbp.html">decode.lbp</a></code> Approximate decoding using max-product loopy belief propagation
+</p>
+</li>
+<li> <p><code><a href="decode.trbp.html">decode.trbp</a></code> Approximate decoding using max-product tree-reweighted belief propagtion
+</p>
+</li>
+<li> <p><code><a href="decode.greedy.html">decode.greedy</a></code> Approximate decoding with greedy algorithm
+</p>
+</li>
+<li> <p><code><a href="decode.icm.html">decode.icm</a></code> Approximate decoding with the iterated conditional modes algorithm
+</p>
+</li>
+<li> <p><code><a href="decode.block.html">decode.block</a></code> Approximate decoding with the block iterated conditional modes algorithm
+</p>
+</li>
+<li> <p><code><a href="decode.ilp.html">decode.ilp</a></code> Exact decoding with an integer linear programming formulation and approximate using LP relaxation
+</p>
 </li></ul>
 
-<p>Inference: Computing the partition function and marginal
-probabilities </p>
- <ul>
-<li> <p><code><a href="infer.exact.html">infer.exact</a></code>
-Exact inference for small graphs with brute-force counting
+<p>Inference: Computing the partition function and marginal probabilities
+</p>
+
+<ul>
+<li> <p><code><a href="infer.exact.html">infer.exact</a></code> Exact inference for small graphs with brute-force counting
 </p>
 </li>
-<li> <p><code><a href="infer.chain.html">infer.chain</a></code> Exact inference for
-chain-structured graphs with the forward-backward algorithm
+<li> <p><code><a href="infer.chain.html">infer.chain</a></code> Exact inference for chain-structured graphs with the forward-backward algorithm
 </p>
 </li>
-<li> <p><code><a href="infer.tree.html">infer.tree</a></code> Exact inference for tree-
-and forest-structured graphs with sum-product belief
-propagation </p>
+<li> <p><code><a href="infer.tree.html">infer.tree</a></code> Exact inference for tree- and forest-structured graphs with sum-product belief propagation
+</p>
 </li>
-<li> <p><code><a href="infer.conditional.html">infer.conditional</a></code>
-Conditional inference (takes another inference method as
-input) </p>
+<li> <p><code><a href="infer.conditional.html">infer.conditional</a></code> Conditional inference (takes another inference method as input)
+</p>
 </li>
-<li> <p><code><a href="infer.cutset.html">infer.cutset</a></code> Exact inference for
-graphs with a small cutset using cutset conditioning </p>
+<li> <p><code><a href="infer.cutset.html">infer.cutset</a></code> Exact inference for graphs with a small cutset using cutset conditioning
+</p>
 </li>
-<li>
-<p><code><a href="infer.junction.html">infer.junction</a></code> Exact decoding for
-low-treewidth graphs using junction trees </p>
+<li> <p><code><a href="infer.junction.html">infer.junction</a></code> Exact decoding for low-treewidth graphs using junction trees
+</p>
 </li>
-<li>
-<p><code><a href="infer.sample.html">infer.sample</a></code> Approximate inference using
-sampling (takes a sampling method as input) </p>
+<li> <p><code><a href="infer.sample.html">infer.sample</a></code> Approximate inference using sampling (takes a sampling method as input)
+</p>
 </li>
-<li>
-<p><code><a href="infer.lbp.html">infer.lbp</a></code> Approximate inference using
-sum-product loopy belief propagation </p>
+<li> <p><code><a href="infer.lbp.html">infer.lbp</a></code> Approximate inference using sum-product loopy belief propagation
+</p>
 </li>
-<li>
-<p><code><a href="infer.trbp.html">infer.trbp</a></code> Approximate inference using
-sum-product tree-reweighted belief propagation </p>
+<li> <p><code><a href="infer.trbp.html">infer.trbp</a></code> Approximate inference using sum-product tree-reweighted belief propagation
+</p>
 </li></ul>
 
 <p>Sampling: Generating samples from the distribution
 </p>
- <ul>
-<li> <p><code><a href="sample.exact.html">sample.exact</a></code> Exact sampling
-for small graphs with brute-force inverse cumulative
-distribution </p>
+
+<ul>
+<li> <p><code><a href="sample.exact.html">sample.exact</a></code> Exact sampling for small graphs with brute-force inverse cumulative distribution
+</p>
 </li>
-<li> <p><code><a href="sample.chain.html">sample.chain</a></code> Exact
-sampling for chain-structured graphs with the
-forward-filter backward-sample algorithm </p>
+<li> <p><code><a href="sample.chain.html">sample.chain</a></code> Exact sampling for chain-structured graphs with the forward-filter backward-sample algorithm
+</p>
 </li>
-<li>
-<p><code><a href="sample.tree.html">sample.tree</a></code> Exact sampling for tree- and
-forest-structured graphs with sum-product belief
-propagation and backward-sampling </p>
+<li> <p><code><a href="sample.tree.html">sample.tree</a></code> Exact sampling for tree- and forest-structured graphs with sum-product belief propagation and backward-sampling
+</p>
 </li>
-<li>
-<p><code><a href="sample.conditional.html">sample.conditional</a></code> Conditional sampling
-(takes another sampling method as input) </p>
+<li> <p><code><a href="sample.conditional.html">sample.conditional</a></code> Conditional sampling (takes another sampling method as input)
+</p>
 </li>
-<li>
-<p><code><a href="sample.cutset.html">sample.cutset</a></code> Exact sampling for graphs with
-a small cutset using cutset conditioning </p>
+<li> <p><code><a href="sample.cutset.html">sample.cutset</a></code> Exact sampling for graphs with a small cutset using cutset conditioning
+</p>
 </li>
-<li>
-<p><code><a href="sample.junction.html">sample.junction</a></code> Exact sampling for
-low-treewidth graphs using junction trees </p>
+<li> <p><code><a href="sample.junction.html">sample.junction</a></code> Exact sampling for low-treewidth graphs using junction trees
+</p>
 </li>
-<li>
-<p><code><a href="sample.gibbs.html">sample.gibbs</a></code> Approximate sampling using a
-single-site Gibbs sampler </p>
+<li> <p><code><a href="sample.gibbs.html">sample.gibbs</a></code> Approximate sampling using a single-site Gibbs sampler
+</p>
 </li></ul>
 
-<p>Training: Given data, computing the most likely estimates
-of the parameters </p>
- <ul>
-<li> <p><code><a href="train.crf.html">train.crf</a></code>
-Train CRF model </p>
+<p>Training: Given data, computing the most likely estimates of the parameters
+</p>
+
+<ul>
+<li> <p><code><a href="train.crf.html">train.crf</a></code> Train CRF model
+</p>
 </li>
-<li> <p><code><a href="train.mrf.html">train.mrf</a></code> Train MRF
-model </p>
+<li> <p><code><a href="train.mrf.html">train.mrf</a></code> Train MRF model
+</p>
 </li></ul>
 
 <p>Tools: Tools for building and manipulating CRF data
 </p>
- <ul>
-<li> <p><code><a href="make.crf.html">make.crf</a></code> Generate CRF from
-the adjacent matrix </p>
+
+<ul>
+<li> <p><code><a href="make.crf.html">make.crf</a></code> Generate CRF from the adjacent matrix
+</p>
 </li>
-<li> <p><code><a href="make.features.html">make.features</a></code> Make
-the data structure of CRF features </p>
+<li> <p><code><a href="make.features.html">make.features</a></code> Make the data structure of CRF features
+</p>
 </li>
-<li>
-<p><code><a href="make.par.html">make.par</a></code> Make the data structure of CRF
-parameters </p>
+<li> <p><code><a href="make.par.html">make.par</a></code> Make the data structure of CRF parameters
+</p>
 </li>
-<li> <p><code><a href="duplicate.crf.html">duplicate.crf</a></code> Duplicate an
-existing CRF </p>
+<li> <p><code><a href="duplicate.crf.html">duplicate.crf</a></code> Duplicate an existing CRF
+</p>
 </li>
-<li> <p><code><a href="clamp.crf.html">clamp.crf</a></code> Generate clamped
-CRF by fixing the states of some nodes </p>
+<li> <p><code><a href="clamp.crf.html">clamp.crf</a></code> Generate clamped CRF by fixing the states of some nodes
+</p>
 </li>
-<li>
-<p><code><a href="clamp.reset.html">clamp.reset</a></code> Reset clamped CRF by changing the
-states of clamped nodes </p>
+<li> <p><code><a href="clamp.reset.html">clamp.reset</a></code> Reset clamped CRF by changing the states of clamped nodes
+</p>
 </li>
-<li> <p><code><a href="sub.crf.html">sub.crf</a></code>
-Generate sub CRF by selecting some nodes </p>
+<li> <p><code><a href="sub.crf.html">sub.crf</a></code> Generate sub CRF by selecting some nodes
+</p>
 </li>
-<li>
-<p><code><a href="mrf.update.html">mrf.update</a></code> Update node and edge potentials of
-MRF model </p>
+<li> <p><code><a href="mrf.update.html">mrf.update</a></code> Update node and edge potentials of MRF model
+</p>
 </li>
-<li> <p><code><a href="crf.update.html">crf.update</a></code> Update node and
-edge potentials of CRF model </p>
+<li> <p><code><a href="crf.update.html">crf.update</a></code> Update node and edge potentials of CRF model
+</p>
 </li></ul>
 
 
@@ -212,14 +183,11 @@ edge potentials of CRF model </p>
 
 <h3>References</h3>
 
-<p>J. Lafferty, A. McCallum, and F. Pereira. Conditional
-random fields: Probabilistic models for segmenting and
-labeling sequence data. In <EM>the proceedings of
-International Conference on Machine Learning (ICML)</EM>, pp.
-282-289, 2001.
+<p>J. Lafferty, A. McCallum, and F. Pereira. Conditional random fields:
+Probabilistic models for segmenting and labeling sequence data. In <EM>the
+proceedings of International Conference on Machine Learning (ICML)</EM>, pp. 282-289, 2001.
 </p>
-<p>Mark Schmidt. UGM: Matlab code for undirected graphical
-models.
+<p>Mark Schmidt. UGM: Matlab code for undirected graphical models.
 <a href="http://www.di.ens.fr/~mschmidt/Software/UGM.html">http://www.di.ens.fr/~mschmidt/Software/UGM.html</a>
 </p>
 
@@ -234,5 +202,5 @@ infer.exact(Small$crf)
 sample.exact(Small$crf, 100)
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>

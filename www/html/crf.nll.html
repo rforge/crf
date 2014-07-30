@@ -47,18 +47,15 @@ crf.nll(par, crf, instances, node.fea = NULL, edge.fea = NULL,
 </td></tr>
 <tr valign="top"><td><code>node.ext</code></td>
 <td>
-<p>The list of extended information of node
-features</p>
+<p>The list of extended information of node features</p>
 </td></tr>
 <tr valign="top"><td><code>edge.ext</code></td>
 <td>
-<p>The list of extended information of edge
-features</p>
+<p>The list of extended information of edge features</p>
 </td></tr>
 <tr valign="top"><td><code>infer.method</code></td>
 <td>
-<p>The inference method used to compute
-the likelihood</p>
+<p>The inference method used to compute the likelihood</p>
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
@@ -69,23 +66,21 @@ the likelihood</p>
 
 <h3>Details</h3>
 
-<p>This function calculates the negative log likelihood of CRF
-model as well as the gradient. This function is intended to
-be called by optimization algorithm in training process.
+<p>This function calculates the negative log likelihood of CRF model as well as
+the gradient. This function is intended to be called by optimization algorithm
+in training process.
 </p>
-<p>In the training data matrix <code>instances</code>, each row is
-an instance and each column corresponds a node in CRF. The
-variables <code>node.fea</code>, <code>edge.fea</code>,
-<code>node.ext</code>, <code>edge.ext</code> are lists of length equal
-to the number of instances, and their elements are defined
-as in <code><a href="crf.update.html">crf.update</a></code> respectively.
+<p>In the training data matrix <code>instances</code>, each row is an instance and
+each column corresponds a node in CRF.
+The variables <code>node.fea</code>, <code>edge.fea</code>, <code>node.ext</code>, <code>edge.ext</code>
+are lists of length equal to the number of instances, and their elements are
+defined as in <code><a href="crf.update.html">crf.update</a></code> respectively.
 </p>
 
 
 <h3>Value</h3>
 
-<p>This function will return the value of CRF negative
-log-likelihood.
+<p>This function will return the value of CRF negative log-likelihood.
 </p>
 
 
@@ -94,5 +89,5 @@ log-likelihood.
 <p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="train.crf.html">train.crf</a></code>
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-7 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
 </body></html>
