@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Calculate CRF negative log likelihood</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Calculate CRF negative log likelihood</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for crf.nll {CRF}"><tr><td>crf.nll {CRF}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for crf.nll {CRF}"><tr><td>crf.nll {CRF}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Calculate CRF negative log likelihood</h2>
 
@@ -25,13 +24,13 @@ crf.nll(par, crf, instances, node.fea = NULL, edge.fea = NULL,
 <h3>Arguments</h3>
 
 <table summary="R argblock">
-<tr valign="top"><td><code>crf</code></td>
-<td>
-<p>The CRF</p>
-</td></tr>
 <tr valign="top"><td><code>par</code></td>
 <td>
 <p>The parameter vector of CRF</p>
+</td></tr>
+<tr valign="top"><td><code>crf</code></td>
+<td>
+<p>The CRF</p>
 </td></tr>
 <tr valign="top"><td><code>instances</code></td>
 <td>
@@ -70,7 +69,7 @@ crf.nll(par, crf, instances, node.fea = NULL, edge.fea = NULL,
 the gradient. This function is intended to be called by optimization algorithm
 in training process.
 </p>
-<p>In the training data matrix <code>instances</code>, each row is an instance and
+<p>In the training data matrix <code>instances</code>, each row is an instance and 
 each column corresponds a node in CRF.
 The variables <code>node.fea</code>, <code>edge.fea</code>, <code>node.ext</code>, <code>edge.ext</code>
 are lists of length equal to the number of instances, and their elements are
@@ -89,5 +88,5 @@ defined as in <code><a href="crf.update.html">crf.update</a></code> respectively
 <p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="train.crf.html">train.crf</a></code>
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>CRF</em> version 0.3-9 <a href="00Index.html">Index</a>]</div>
 </body></html>

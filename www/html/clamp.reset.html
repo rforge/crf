@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Reset clamped CRF</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Reset clamped CRF</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for clamp.reset {CRF}"><tr><td>clamp.reset {CRF}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for clamp.reset {CRF}"><tr><td>clamp.reset {CRF}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Reset clamped CRF</h2>
 
@@ -38,8 +37,8 @@ clamp.reset(crf, clamped)
 <h3>Details</h3>
 
 <p>The function will reset a clamped CRF by changing the states of fixed nodes.
-The vector <code>clamped</code> contains the desired state for each node
-while zero means the state is not fixed. The node and edge potentials are
+The vector <code>clamped</code> contains the desired state for each node 
+while zero means the state is not fixed. The node and edge potentials are 
 updated to the conditional potentials based on the clamped vector.
 </p>
 
@@ -59,11 +58,14 @@ updated to the conditional potentials based on the clamped vector.
 <h3>Examples</h3>
 
 <pre>
+
 library(CRF)
 data(Small)
 crf &lt;- clamp.crf(Small$crf, c(0, 0, 1, 1))
 clamp.reset(crf, c(0,0,2,2))
+
+
 </pre>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>CRF</em> version 0.3-9 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Make CRF features</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Make CRF features</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 </head><body>
 
-<table width="100%" summary="page for make.features {CRF}"><tr><td>make.features {CRF}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for make.features {CRF}"><tr><td>make.features {CRF}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Make CRF features</h2>
 
@@ -47,13 +46,13 @@ make.features(crf, n.nf = 1, n.ef = 1)
 respectively.
 </p>
 <p>The objects <code>node.par</code> and <code>edge.par</code> define the corresponding
-parameters used with each feature. <code>node.par</code> is a 3-dimensional arrays,
-and element <code>node.par[n,i,f]</code> is the index of parameter associated with the
+parameters used with each feature. <code>node.par</code> is a 3-dimensional arrays, 
+and element <code>node.par[n,i,f]</code> is the index of parameter associated with the 
 corresponding node potential <code>node.pot[n,i]</code> and node feature <code>f</code>.
-<code>edge.par</code> is a list of 3-dimensional arrays, and element
-<code>edge.par[[e]][i,j,f]</code> is the index of parameter associated with the
+<code>edge.par</code> is a list of 3-dimensional arrays, and element 
+<code>edge.par[[e]][i,j,f]</code> is the index of parameter associated with the 
 corresponding edge potential <code>edge.pot[[e]][i,j]</code> and edge feature <code>f</code>.
-The value 0 is used to indicate the corresponding node or edge potential
+The value 0 is used to indicate the corresponding node or edge potential 
 does not depend on that feature.
 </p>
 <p>For detail of calculation of node and edge potentials from features and parameters,
@@ -72,5 +71,5 @@ please see <code><a href="crf.update.html">crf.update</a></code>.
 <p><code><a href="crf.update.html">crf.update</a></code>, <code><a href="make.par.html">make.par</a></code>, <code><a href="make.crf.html">make.crf</a></code>
 </p>
 
-<hr><div align="center">[Package <em>CRF</em> version 0.3-8 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>CRF</em> version 0.3-9 <a href="00Index.html">Index</a>]</div>
 </body></html>
