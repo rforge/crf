@@ -45,6 +45,8 @@ echo $contents; } ?>
 
 <p> <strong>Reference manual:</strong> <a href="html/00Index.html">HTML</a>, <a href="pdf/CRF.pdf">PDF</a>. </p>
 
+<p> <strong>Latest source code:</strong> <a href="https://bitbucket.org/wulingyun/crf">Bitbucket</a>. </p>
+
 <p> R packages that uses CRF: </p>
 
 <ul>
