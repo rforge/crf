@@ -43,19 +43,13 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> <strong>Reference manual:</strong> <a href="html/00Index.html">HTML</a>, <a href="pdf/CRF.pdf">PDF</a>. </p>
+<p> <strong>Homepage:</strong> <a href="https://bitbucket.org/wulingyun/crf">https://bitbucket.org/wulingyun/crf</a>. </p>
 
-<p> <strong>Latest source code:</strong> <a href="https://bitbucket.org/wulingyun/crf">Bitbucket</a>. </p>
+<p> <strong>Stable version:</strong> <a href="https://cran.r-project.org/web/packages/CRF/">CRAN</a>, 
+<a href="http://r-forge.r-project.org/projects/crf/">R-Forge</a>. </p>
 
-<p> R packages that uses CRF: </p>
+<p> <strong>Latest beta version:</strong> <a href="https://bitbucket.org/wulingyun/crf/src">Bitbucket</a>. </p>
 
-<ul>
-	<li><a href="http://corbi.r-forge.r-project.org">Corbi</a></li>
-</ul>
-
-<p> If you use CRF in your package and project, please inform us so that we can add the link here. </p>
-
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
 </body>
 </html>
