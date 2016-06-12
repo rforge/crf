@@ -43,12 +43,12 @@ echo $contents; } ?>
 
 <!-- end of project description -->
 
-<p> <strong>Homepage:</strong> <a href="https://bitbucket.org/wulingyun/crf">https://bitbucket.org/wulingyun/crf</a>. </p>
+<p> <strong>Homepage:</strong> <a href="https://github.com/wulingyun/CRF">https://github.com/wulingyun/CRF</a>. </p>
 
 <p> <strong>Stable version:</strong> <a href="https://cran.r-project.org/web/packages/CRF/">CRAN</a>, 
 <a href="http://r-forge.r-project.org/projects/crf/">R-Forge</a>. </p>
 
-<p> <strong>Latest beta version:</strong> <a href="https://bitbucket.org/wulingyun/crf/src">Bitbucket</a>. </p>
+<p> <strong>Latest beta version:</strong> <a href="https://github.com/wulingyun/CRF">GitHub</a>. </p>
 
 
 </body>
