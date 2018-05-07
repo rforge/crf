@@ -368,13 +368,20 @@ decode.block <- function(crf, blocks, decode.method = decode.tree, restart = 0, 
 #' 
 #' @examples
 #' 
+#' \dontrun{
 #' library(CRF)
 #' data(Small)
 #' d <- decode.ilp(Small$crf)
+#' }
 #'
 #' @export 
 decode.ilp <- function(crf, lp.rounding = FALSE)
 {
+  if (!requireNamespace("Rglpk", quietly = TRUE)) {
+    stop("Package \"Rglpk\" needed for the function decode.ilp to work. Please install it.",
+         call. = FALSE)
+  }
+
 	vmap.nodes <- matrix(nrow=crf$n.nodes, ncol=2)
 	vmap.edges <- matrix(nrow=crf$n.edges, ncol=2)
 	n <- 0
