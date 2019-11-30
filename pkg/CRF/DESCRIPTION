@@ -1,5 +1,5 @@
 Package: CRF
-Version: 0.4-2
+Version: 0.4-3
 Title: Conditional Random Fields
 Description: Implements modeling and computational tools for conditional
     random fields (CRF) model as well as other probabilistic undirected
@@ -14,5 +14,5 @@ VignetteBuilder: knitr
 License: GPL (>= 2)
 BugReports: https://github.com/wulingyun/CRF/issues
 URL: https://github.com/wulingyun/CRF
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.1
 Encoding: UTF-8
